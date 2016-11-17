@@ -10,7 +10,7 @@
 
         <link rel="shortcut icon" href="https://cartodb.com/assets/favicon.ico" />
 
-        <link rel="stylesheet" href="https://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+        <link rel="stylesheet" href="cartodb.css" type="text/css" />
 
         <!-- error using this stylesheet -->
         <!--<link rel="stylesheet" href="http://academy.cartodb.com/css/cdbui.css" type="text/css" />-->
@@ -391,7 +391,7 @@
 		</div>
 
         <!-- include cartodb.js library -->
-        <script src="https://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
+        <script src="cartodb.js" type="text/javascript"></script>
 
         <!-- Place your code in the script tags below -->
         <script type="text/javascript">
@@ -446,7 +446,7 @@
 					zoom: 16
 			  		});
 
-				L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
+				L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
 					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 					}).addTo(map_object);
 
@@ -481,19 +481,10 @@
 	                    console.log("selected=",selected);
 
 	                    console.log(idNum);
-	                    //if (idNum == "6"){
-	                    	//$options.removeClass('cartocss_selected');
 	                    layerCSS = $('#'+selected+'1').text() + color + $('#'+selected+'2').text();
 	                    console.log(layerCSS);
 	                    sublayerList[idNum].setCartoCSS(layerCSS);
-	                    //}
 
-	                    /*else{
-		                    // use set cartocss on the sublayer
-		                    layerCSS = $('#'+selected).text();
-		                    console.log(layerCSS);
-		                    sublayerList[idNum].setCartoCSS(layerCSS);
-	                	}*/
 					});
 
 				}
