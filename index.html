@@ -8,18 +8,18 @@
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-        <link rel="shortcut icon" href="https://cartodb.com/assets/favicon.ico" />
+        <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
 
-        <link rel="stylesheet" href="cartodb.css" type="text/css" />
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
 
         <!-- error using this stylesheet -->
         <!--<link rel="stylesheet" href="http://academy.cartodb.com/css/cdbui.css" type="text/css" />-->
 
         <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 
 
@@ -63,7 +63,7 @@
                 font-size: 13px;
                 color: #444;
                 cursor: pointer;
-				
+                
             }
             .layer_selector li:not(:last-child) {
                 border-bottom: 1px solid #999;
@@ -79,416 +79,425 @@
 
             
             /* Dropdown Button */
-			.dropbtn {
-			    background-color: #4CAF50;
-			    color: white;
-			    padding: 16px;
-			    font-size: 16px;
-			    border: none;
-			    cursor: pointer;
-			}
+            .dropbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
 
-			/* The container <div> - needed to position the dropdown content */
-			.dropdown {
-			    position: relative;
-			    display: inline-block;
-			}
+            /* The container <div> - needed to position the dropdown content */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
 
-			/* Dropdown Content (Hidden by Default) */
-			.dropdown-content {
-			    display: none;
-			    position: absolute;
-			    background-color: #f9f9f9;
-			    min-width: 160px;
-			    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-			}
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
 
-			/* Links inside the dropdown */
-			.dropdown-content a {
-			    color: black;
-			    padding: 12px 16px;
-			    text-decoration: none;
-			    display: block;
-			}
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
 
-			/* Change color of dropdown links on hover */
-			.dropdown-content a:hover {background-color: #f1f1f1}
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {background-color: #f1f1f1}
 
-			/* Show the dropdown menu on hover */
-			.dropdown:hover .dropdown-content {
-			    display: block;
-			}
+            /* Show the dropdown menu on hover */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
 
-			.dropdown:hover .dropdown-menu {
-				display: block;
-			}
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
 
-			/* Change the background color of the dropdown button when the dropdown content is shown */
-			.dropdown:hover .dropbtn {
-			    background-color: #3e8e41;
-			}
+            /* Change the background color of the dropdown button when the dropdown content is shown */
+            .dropdown:hover .dropbtn {
+                background-color: #3e8e41;
+            }
 
 
             </style>
            
-			<style type="cartocss/html" id="default">
+            <style type="cartocss/html" id="default">
                 /** default visualization */
                 #campus_outline {
-                	polygon-fill: #2a436e;
-                	polygon-opacity: 0.41;
-                	line-width: 1;
-                	line-color: #FFF;
-                	line-opacity: 0.5;
+                    polygon-fill: #2a436e;
+                    polygon-opacity: 0.41;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
                 }
                 #campuspathsclean {
-                	line-width: 1.5;
-                	line-color: #20635c;
-                	line-opacity: 1;
+                    line-width: 1.5;
+                    line-color: #20635c;
+                    line-opacity: 1;
                 }
                 #bg_trees {
-                	marker-width: 7;
-                	marker-fill: #ff9a27;
-                	marker-fill-opacity: 0.9;
-                	marker-allow-overlap: true;
-                	marker-line-width: 1;
-                	marker-line-color: #FFF;
-                	marker-line-opacity: 1;
+                    marker-width: 7;
+                    marker-fill: #ff9a27;
+                    marker-fill-opacity: 0.9;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
                 }
                 #public_art {
-                	marker-width: 10;
-                	marker-fill: #ff0c1d;
-                	marker-fill-opacity: 1;
-                	marker-allow-overlap: true;
-                	marker-line-width: 1;
-                	marker-line-color: #FFF;
-                	marker-line-opacity: 1;
+                    marker-width: 10;
+                    marker-fill: #ff0c1d;
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
                 }
                 #smith_buildings {
-					polygon-fill: #fff491; /** yellow poly fill**/
-					polygon-opacity: 0.9;
-					line-width: 1;
-					line-color: #FFF;
-					line-opacity: 0.5;
-				}
+                    polygon-fill: #fff491; /** yellow poly fill**/
+                    polygon-opacity: 0.9;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
+                }
                 #parking_lots {
-                	polygon-fill: #f26fe0;
-                	polygon-opacity: 0.9;
-                	line-width: 1;
-                	line-color: #FFF;
-                	line-opacity: 0.5;
+                    polygon-fill: #f26fe0;
+                    polygon-opacity: 0.9;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
                 }        
             </style>
 
             <style type="cartocss/html" id="parking_lots">
-            	#parking_lots {
-                	polygon-fill: #f26f6f;
-                	polygon-opacity: 0.9;
-                	line-width: 1;
-                	line-color: #FFF;
-                	line-opacity: 0.5;
+                #parking_lots {
+                    polygon-fill: #f26f6f;
+                    polygon-opacity: 0.9;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
                 }  
             </style>
 
             <style type="cartocss/html" id="parking_lots1">
-            	#parking_lots {
-                	polygon-fill: 
+                #parking_lots {
+                    polygon-fill: 
             </style>
 
             <style type="cartocss/html" id="parking_lots2">
-            	;
-                	polygon-opacity: 0.9;
-                	line-width: 1;
-                	line-color: #FFF;
-                	line-opacity: 0.5;
+                ;
+                    polygon-opacity: 0.9;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
                 }  
             </style>
 
             <style type="cartocss/html" id="campuspathsclean">
                 #campuspathsclean {
-                	line-width: 1.5;
-                	line-color: red;
-                	line-opacity: 1;
+                    line-width: 1.5;
+                    line-color: red;
+                    line-opacity: 1;
                 }
             </style>
 
             <style type="cartocss/html" id="campuspathsclean1">
                 #campuspathsclean {
-                	line-width: 1.5;
-                	line-color: 
+                    line-width: 1.5;
+                    line-color: 
             </style>
 
             <style type="cartocss/html" id="campuspathsclean2">
                 ;
-                	line-opacity: 1;
+                    line-opacity: 1;
                 }
             </style>
 
             <style type="cartocss/html" id="smith_buildings">
                 #smith_buildings {
-					polygon-fill: #a391ff;
-					polygon-opacity: 0.9;
-					line-width: 1;
-					line-color: #FFF;
-					line-opacity: 0.5;
-				}
+                    polygon-fill: #a391ff;
+                    polygon-opacity: 0.9;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
+                }
             </style>
 
             <style type="cartocss/html" id="smith_buildings1">
                 #smith_buildings {
-					polygon-fill: 
+                    polygon-fill: 
             </style>
 
             <style type="cartocss/html" id="smith_buildings2">
-				;
-					polygon-opacity: 0.9;
-					line-width: 1;
-					line-color: #FFF;
-					line-opacity: 0.5;
-				}
+                ;
+                    polygon-opacity: 0.9;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
+                }
             </style>
 
             <style type="cartocss/html" id="campus_outline">
-            	#campus_outline {
-                	polygon-fill: black;
-                	polygon-opacity: 0.41;
-                	line-width: 1;
-                	line-color: #FFF;
-                	line-opacity: 0.5;
+                #campus_outline {
+                    polygon-fill: black;
+                    polygon-opacity: 0.41;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
                 }                
             </style>
 
             <style type="cartocss/html" id="campus_outline1">
-            	#campus_outline {
-                	polygon-fill: 
+                #campus_outline {
+                    polygon-fill: 
             </style>
 
             <style type="cartocss/html" id="campus_outline2">
-            	;
-                	polygon-opacity: 0.41;
-                	line-width: 1;
-                	line-color: #FFF;
-                	line-opacity: 0.5;
+                ;
+                    polygon-opacity: 0.41;
+                    line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
                 }                
             </style>
 
             <style type="cartocss/html" id="public_art">
-            	#public_art {
-                	marker-width: 10;
-                	marker-fill: black;
-                	marker-fill-opacity: 1;
-                	marker-allow-overlap: true;
-                	marker-line-width: 1;
-                	marker-line-color: #FFF;
-                	marker-line-opacity: 1;
+                #public_art {
+                    marker-width: 10;
+                    marker-fill: black;
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
                 }
             </style>
 
             <style type="cartocss/html" id="public_art1">
-            	#public_art {
-                	marker-width: 10;
-                	marker-fill: 
+                #public_art {
+                    marker-width: 10;
+                    marker-fill: 
             </style>
 
             <style type="cartocss/html" id="public_art2">
-            	;
-                	marker-fill-opacity: 1;
-                	marker-allow-overlap: true;
-                	marker-line-width: 1;
-                	marker-line-color: #FFF;
-                	marker-line-opacity: 1;
+                ;
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
                 }
             </style>
 
             <style type="cartocss/html" id="bg_trees">
                 #bg_trees {
-                	marker-width: 7;
-                	marker-fill: blue;
-                	marker-fill-opacity: 0.9;
-                	marker-allow-overlap: true;
-                	marker-line-width: 1;
-                	marker-line-color: #FFF;
-                	marker-line-opacity: 1;
+                    marker-width: 7;
+                    marker-fill: blue;
+                    marker-fill-opacity: 0.9;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
                 }
             </style>
 
             <style type="cartocss/html" id="bg_trees1">
                 #bg_trees {
-                	marker-width: 7;
-                	marker-fill: 
+                    marker-width: 7;
+                    marker-fill: 
             </style>
-			
+            
 
-			<style type="cartocss/html" id="bg_trees2">
+            <style type="cartocss/html" id="bg_trees2">
 ;
-                	marker-fill-opacity: 0.9;
-                	marker-allow-overlap: true;
-                	marker-line-width: 1;
-                	marker-line-color: #FFF;
-                	marker-line-opacity: 1;
+                    marker-fill-opacity: 0.9;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
                 }
             </style>
-			
-			
+            
+            
 
     </head>
     <body>
         <div id="map"></div>
-			<div id="cartocss" class="layer_selector">
-		
-				<p>CartoCSS Selectors: Change Colors of Layer</p>
-				<center>
-			        <li class="dropdown">
-			          <ul class="dropdown-toggle" data-toggle="dropdown" data="smith_buildings" data-type="cartocss" id="5">Smith Buildings <b class="caret"></b></ul>
-			          <ul class="dropdown-menu">
-			            <li data="smith_buildings" id="5" color="blue">Blue</li>
-						<li data="smith_buildings" id="5" color="red">Red</li>
-			          </ul>
-			        </li>
-			        <br>
-			        <li class="dropdown">
-			          <ul class="dropdown-toggle" data-toggle="dropdown" data="parking_lots" data-type="cartocss" id="4">Parking Lots <b class="caret"></b></ul>
-			          <ul class="dropdown-menu">
-			            <li data="parking_lots" id="4" color="blue">Blue</li>
-						<li data="parking_lots" id="4" color="red">Red</li>
-			          </ul>
-			        </li>
-			        <br>
-			        <li class="dropdown">
-			          <ul class="dropdown-toggle" data-toggle="dropdown" data="public_art" data-type="cartocss" id="3">Public Art <b class="caret"></b></ul>
-			          <ul class="dropdown-menu">
-			            <li data="public_art" id="3" color="blue">Blue</li>
-			    		<li data="public_art" id="3" color="red">Red</li>
-			          </ul>
-			        </li>
-			        <br>
-			        <li class="dropdown">
-			          <ul class="dropdown-toggle" data-toggle="dropdown" data="bg_trees" data-type="cartocss" id="2">Trees <b class="caret"></b></ul>
-			          <ul class="dropdown-menu">
-			            <li data="bg_trees" id="2" color="blue">Blue</li>
-			    		<li data="bg_trees" id="2" color="red">Red</li>
-			          </ul>
-			        </li>
-			        <br>
-			        <li class="dropdown">
-			          <ul class="dropdown-toggle" data-toggle="dropdown" data="campuspathsclean" data-type="cartocss" id="1">Campus Paths <b class="caret"></b></ul>
-			          <ul class="dropdown-menu">
-			            <li data="campuspathsclean" id="1" color="blue">Blue</li>
-			    		<li data="campuspathsclean" id="1" color="red">Red</li>
-			          </ul>
-			        </li>
-			        <br>
-			        <li class="dropdown">
-			          <ul class="dropdown-toggle" data-toggle="dropdown" data="campus_outline" data-type="cartocss" id="0">Campus Outline <b class="caret"></b></ul>
-			          <ul class="dropdown-menu">
-			            <li data="campus_outline" id="0" color="blue">Blue</li>
-			    		<li data="campus_outline" id="0" color="red">Red</li>
-			          </ul>
-			        </li>
+            <div id="cartocss" class="layer_selector">
+        
+                <p>CartoCSS Selectors: Change Colors of Layer</p>
+                <center>
+                    <li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="smith_buildings" data-type="cartocss" id="5">Smith Buildings <b class="caret"></b></ul>
+                      <ul class="dropdown-menu">
+                        <li data="smith_buildings" id="5" color="navy">Navy</li>
+                        <li data="smith_buildings" id="5" color="purple">Purple</li>
+                      </ul>
+                    </li>
+                    <br>
+                    <li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="parking_lots" data-type="cartocss" id="4">Parking Lots <b class="caret"></b></ul>
+                      <ul class="dropdown-menu">
+                        <li data="parking_lots" id="4" color="violet">Pink</li>
+                        <li data="parking_lots" id="4" color="peru">Tan</li>
+                      </ul>
+                    </li>
+                    <br>
+                    <li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="public_art" data-type="cartocss" id="3">Public Art <b class="caret"></b></ul>
+                      <ul class="dropdown-menu">
+                        <li data="public_art" id="3" color="red">Red</li>
+                        <li data="public_art" id="3" color="orange">Orange</li>
+                      </ul>
+                    </li>
+                    <br>
+                    <li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="bg_trees" data-type="cartocss" id="2">Trees <b class="caret"></b></ul>
+                      <ul class="dropdown-menu">
+                        <li data="bg_trees" id="2" color="green">Green</li>
+                        <li data="bg_trees" id="2" color="brown">Brown</li>
+                      </ul>
+                    </li>
+                    <br>
+                    <li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="campuspathsclean" data-type="cartocss" id="1">Campus Paths <b class="caret"></b></ul>
+                      <ul class="dropdown-menu">
+                        <li data="campuspathsclean" id="1" color="gold">Yellow</li>
+                        <li data="campuspathsclean" id="1" color="teal">Teal</li>
+                      </ul>
+                    </li>
+                    <br>
+                    <li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="campus_outline" data-type="cartocss" id="0">Campus Outline <b class="caret"></b></ul>
+                      <ul class="dropdown-menu">
+                        <li data="campus_outline" id="0" color="gray">Gray</li>
+                        <li data="campus_outline" id="0" color="maroon">Maroon</li>
+                      </ul>
+                    </li>
 
 
-    			</center>
-			</div>
-		</div>
+                </center>
+            </div>
+        </div>
 
         <!-- include cartodb.js library -->
-        <script src="cartodb.js" type="text/javascript"></script>
+        <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
 
         <!-- Place your code in the script tags below -->
         <script type="text/javascript">
-			window.onload = function () {
-			  	var layerOptions = {
-					user_name: 'smithgis',
-					type: 'cartodb',
-					sublayers: [{
-						sql: 'SELECT * from campus_outline',
-						cartocss: '#campus_outline {polygon-fill: #2a436e;polygon-opacity: 0.41;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
-						interactivity: 'cartodb_id'
-						},
-						{
-						sql: 'SELECT * from campuspathsclean',
-						cartocss: '#campuspathsclean {line-width: 1.5;line-color: #20635c;line-opacity: 1;}',
-						interactivity: 'cartodb_id'
-						},
-						{
-						sql: 'SELECT * from bg_trees',
-						cartocss: '#bg_trees {marker-width: 7;marker-fill: #ff9a27;marker-fill-opacity: 0.9;marker-allow-overlap: true;marker-line-width: 1;marker-line-color: #FFF;marker-line-opacity: 1;}',
-						interactivity: 'cartodb_id'
-						},
-						{
-						sql: 'SELECT * from public_art',
-						cartocss: '#public_art {marker-width: 10;marker-fill: #ff0c1d;marker-fill-opacity: 1;marker-allow-overlap: true;marker-line-width: 1;marker-line-color: #FFF;marker-line-opacity: 1;}',
-						interactivity: 'cartodb_id'
-						},
-						{
-						sql: 'SELECT * from parking_lots',
-						cartocss: '#parking_lots {polygon-fill: #f26fe0;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
-						interactivity: 'cartodb_id'
-						},
-						{
-						sql: 'SELECT * from smith_buildings',
-						cartocss: '#smith_buildings {polygon-fill: #fff491;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
-						interactivity: 'cartodb_id'
-					}]
-				};
-			  
-			  
-				// For storing the sublayer
-				var sublayer;
+            window.onload = function () {
+                var layerOptions = {
+                    user_name: 'smithgis',
+                    type: 'cartodb',
+                    sublayers: [{
+                        sql: 'SELECT * from campus_outline',
+                        cartocss: '#campus_outline {polygon-fill: #b0c4de;polygon-opacity: 0.41;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
+                        interactivity: 'cartodb_id'
+                        },
+                        {
+                        sql: 'SELECT * from campuspathsclean',
+                        cartocss: '#campuspathsclean {line-width: 1.5;line-color: #708090;line-opacity: 1;}',
+                        interactivity: 'cartodb_id'
+                        },
+                        {
+                        sql: 'SELECT * from bg_trees',
+                        cartocss: '#bg_trees {marker-width: 7;marker-fill: #228b22;marker-fill-opacity: 0.9;marker-allow-overlap: true;marker-line-width: 1;marker-line-color: #FFF;marker-line-opacity: 1;}',
+                        interactivity: 'cartodb_id'
+                        },
+                        {
+                        sql: 'SELECT * from public_art',
+                        cartocss: '#public_art {marker-width: 10;marker-fill: #f08080;marker-fill-opacity: 1;marker-allow-overlap: true;marker-line-width: 1;marker-line-color: #FFF;marker-line-opacity: 1;}',
+                        interactivity: 'cartodb_id'
+                        },
+                        {
+                        sql: 'SELECT * from parking_lots',
+                        cartocss: '#parking_lots {polygon-fill: #696969;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
+                        interactivity: 'cartodb_id'
+                        },
+                        {
+                        sql: 'SELECT * from smith_buildings',
+                        cartocss: '#smith_buildings {polygon-fill: #000000;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
+                        interactivity: 'cartodb_id'
+                    }]
+                };
+              
+              
+                // For storing the sublayer
+                var sublayer;
 
-				var sublayerList = [];
-			  
-				var geom = "smith_buildings.the_geom_webmercator";
+                var sublayerList = [];
+              
+                var geom = "smith_buildings.the_geom_webmercator";
 
-				// Instantiate new map object, place it in 'map' element
-				var map_object = new L.Map('map', 
-			  		{
-					center: [42.317296, -72.639171],
-					zoom: 16
-			  		});
+                // Instantiate new map object, place it in 'map' element
+                var map_object = new L.Map('map', 
+                    {
+                    center: [42.317296, -72.639171],
+                    zoom: 16
+                    });
 
-				L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',{
-					attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
-					}).addTo(map_object);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+                    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+                    }).addTo(map_object);
 
-				// Add data layer to your map
-				cartodb.createLayer(map_object, layerOptions)
-					.addTo(map_object)
-					.done(function(layer) {	
+                // Add data layer to your map
+                cartodb.createLayer(map_object, layerOptions)
+                    .addTo(map_object)
+                    .done(function(layer) { 
 
-						for (var i =0; i<layer.getSubLayerCount(); i++){
-							sublayerList.push(layer.getSubLayer(i));
-							layer.getSubLayer(i)
-						}
+                        for (var i =0; i<layer.getSubLayerCount(); i++){
+                            sublayerList.push(layer.getSubLayer(i));
+                            layer.getSubLayer(i)
+                        }
 
-					createSelector(layer, sublayerList);
-				 	})
-				.error(function(err) {
-				  console.log("error: " + err);
-				});
+                    createSelector(layer, sublayerList);
+                    })
+                .error(function(err) {
+                  console.log("error: " + err);
+                });
 
-				function createSelector(layer, sublayerList) {
-					var condition = ""; // SQL or CartoCSS string
-	                //var $options = $(".layer_selector").find("li");
-	                var $options = $(".layer_selector").find("li");
-	                $options.click(function(e) {
-	                    var $li = $(e.target);
-	                    var selected = $li.attr('data');
-	                    var idNum = $li.attr('id');
-	                    var color = $li.attr('color');
+                function createSelector(layer, sublayerList) {
+                    var condition = ""; // SQL or CartoCSS string
+                    //var $options = $(".layer_selector").find("li");
+                    var $options = $(".layer_selector").find("li");
+                    $options.click(function(e) {
+                        var $li = $(e.target);
+                        var selected = $li.attr('data');
+                        var idNum = $li.attr('id');
+                        var color = $li.attr('color');
 
-	                    console.log("li=",$li, "selected=",selected, "idnum=", idNum, "color=",color);
+                        console.log("li=",$li, "selected=",selected, "idnum=", idNum, "color=",color);
 
-	                    console.log("selected=",selected);
+                        console.log("selected=",selected);
 
-	                    console.log(idNum);
-	                    layerCSS = $('#'+selected+'1').text() + color + $('#'+selected+'2').text();
-	                    console.log(layerCSS);
-	                    sublayerList[idNum].setCartoCSS(layerCSS);
+                        console.log(idNum);
+                        //if (idNum == "6"){
+                            //$options.removeClass('cartocss_selected');
+                        layerCSS = $('#'+selected+'1').text() + color + $('#'+selected+'2').text();
+                        console.log(layerCSS);
+                        sublayerList[idNum].setCartoCSS(layerCSS);
+                        //}
 
-					});
+                        /*else{
+                            // use set cartocss on the sublayer
+                            layerCSS = $('#'+selected).text();
+                            console.log(layerCSS);
+                            sublayerList[idNum].setCartoCSS(layerCSS);
+                        }*/
+                    });
 
-				}
-			}
+                }
+            }  
         </script>
     </body>
 </html>
