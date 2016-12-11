@@ -456,76 +456,111 @@
 
                 <p>CartoCSS Selectors</p>
                 <center>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="smith_buildings" data-type="cartocss" id="5">Smith Buildings <b class="caret"></b></ul>
+                    <!--<li class="dropdown">
+                      <ul class="dropdown-toggle" data-toggle="dropdown" data="smith_buildings" data-type="cartocss" id="5">Smith Buildings 
+                        <b class="caret"></b></ul>
                       <ul class="dropdown-menu">
                         <li data="smith_buildings" id="5" color="navy">Navy</li>
                         <li data="smith_buildings" id="5" color="purple">Purple</li>
                       </ul>
-                    </li>
+                    </li>-->
 
-                    <br>
-                    <input num="5" color="smith_buildings_color" id="smith_buildings_slider" css="smith_buildingsop" data-slider-id='smith_buildings_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <label name="smith_buildings" class="radio-inline">Smith Buildings</label><br>
+                        <input type="radio" value="navy" name="smith_buildings" data="smith_buildings" id="5" color="navy"> Navy</input>
+                        <input type="radio" value ="purple" name="building_color" data="smith_buildings" id="5" color="navy"> Purple</input>
+                    <br><br>
+                    
 
-                    <br>
+
+
+
+                    <!--<br>
+                    <input num="5" color="smith_buildings_color" id="smith_buildings_slider" css="smith_buildingsop" data-slider-id='smith_buildings_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
+
+                    <!--<br>
                     <li class="dropdown">
                       <ul class="dropdown-toggle" data-toggle="dropdown" data="parking_lots" data-type="cartocss" id="4">Parking Lots <b class="caret"></b></ul>
                       <ul class="dropdown-menu">
                         <li data="parking_lots" id="4" color="violet">Pink</li>
                         <li data="parking_lots" id="4" color="peru">Tan</li>
                       </ul>
-                    </li>
+                    </li>-->
 
-                    <br>
-                    <input num="4" color="parking_lots_color" id="parking_lots_slider" css="parking_lotsop" data-slider-id='parking_lots_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <label name="parking_lots" class="radio-inline">Parking Lots</label><br>
+                        <input type="radio" value = "peru" name="parking_color" data="parking_lots" id="4" color="peru"> Tan</input>
+                        <input type="radio" value ="violet" name="parking_color" data="parking_lots" id="4" color="violet"> Violet</input>
+                    <br><br>
+                    
+                    <!--<input num="4" color="parking_lots_color" id="parking_lots_slider" css="parking_lotsop" data-slider-id='parking_lots_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
 
-                    <br>
-                    <li class="dropdown">
+                  
+                    <!--<li class="dropdown">
                       <ul class="dropdown-toggle" data-toggle="dropdown" data="public_art" data-type="cartocss" id="3">Public Art <b class="caret"></b></ul>
                       <ul class="dropdown-menu">
                         <li data="public_art" id="3" color="red">Red</li>
                         <li data="public_art" id="3" color="orange">Orange</li>
                       </ul>
-                    </li>
+                    </li>-->
 
-                    <br>
-                    <input num="3" color="public_art_color" id="public_art_slider" css="public_artop" data-slider-id='public_art_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <label name="public_art" class="radio-inline">Public Art</label><br>
+                        <input type="radio" value = "red" name="public_color" data="public_art" id="3" color="red"> Red</input>
+                        <input type="radio" value ="orange" name="public_color" data="public_art" id="3" color="orange"> Orange</input>
+                    <br><br>
 
-                    <br>
-                    <li class="dropdown">
+                    
+                    <!--<input num="3" color="public_art_color" id="public_art_slider" css="public_artop" data-slider-id='public_art_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
+
+                    
+                    <!--<li class="dropdown">
                       <ul class="dropdown-toggle" data-toggle="dropdown" data="bg_trees" data-type="cartocss" id="2">Trees <b class="caret"></b></ul>
                       <ul class="dropdown-menu">
                         <li data="bg_trees" id="2" color="green">Green</li>
                         <li data="bg_trees" id="2" color="brown">Brown</li>
                       </ul>
-                    </li>
+                    </li>-->
 
-                    <br>
-                    <input num="2" color="bg_trees_color" id="bg_trees_slider" css="bg_treesop" data-slider-id='bg_trees_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <label name="bg_trees" class="radio-inline">Trees</label><br>
+                        <input type="radio" value = "green" name="trees_color" ddata="bg_trees" id="2" color="green"> Green</input>
+                        <input type="radio" value ="brown" name="trees_color" data="bg_trees" id="2" color="brown"> Brown</input>
+                    <br><br>
 
-                    <br>
-                    <li class="dropdown">
+                    
+                    <!--<input num="2" color="bg_trees_color" id="bg_trees_slider" css="bg_treesop" data-slider-id='bg_trees_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
+
+                    
+                    <!--<li class="dropdown">
                       <ul class="dropdown-toggle" data-toggle="dropdown" data="campuspathsclean" data-type="cartocss" id="1">Campus Paths <b class="caret"></b></ul>
                       <ul class="dropdown-menu">
                         <li data="campuspathsclean" id="1" color="gold">Yellow</li>
                         <li data="campuspathsclean" id="1" color="teal">Teal</li>
                       </ul>
-                    </li>
+                    </li>-->
 
-                    <br>
-                    <input num="1" color="campuspathsclean_color" id="campuspathsclean_slider" css="campuspathscleanop" data-slider-id='campuspathsclean_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <label name="campuspathsclean" class="radio-inline">Campus Paths</label><br>
+                        <input type="radio" value = "green" name="cp_color" data="campuspathsclean" id="1" color="gold"> Gold</input>
+                        <input type="radio" value ="teal" name="cp_color" data="campuspathsclean" id="1" color="teal"> Teal</input>
+                    <br><br>
 
-                    <br>
+                    
+                    <!--<input num="1" color="campuspathsclean_color" id="campuspathsclean_slider" css="campuspathscleanop" data-slider-id='campuspathsclean_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
+
+                    <!--<br>
                     <li class="dropdown">
                       <ul class="dropdown-toggle" data-toggle="dropdown" data="campus_outline" data-type="cartocss" id="0">Campus Outline <b class="caret"></b></ul>
                       <ul class="dropdown-menu">
                         <li data="campus_outline" id="0" color="gray">Gray</li>
                         <li data="campus_outline" id="0" color="maroon">Maroon</li>
                       </ul>
-                    </li>
+                    </li>-->
 
-                    <br>
-                    <input num="0" color="campus_outline_color" id="campus_outline_slider" css="campus_outlineop" data-slider-id='campus_outline_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <label name="campus_outline" class="radio-inline">Campus Outline</label><br>
+                        <input type="radio" value = "green" name="co_color" ddata="campus_outline" id="0" color="gray"> Gray</input>
+                        <input type="radio" value ="teal" name="co_color" data="campus_outline" id="0" color="maroon"> Maroon</input>
+                    <br><br>
+
+                    <button type="button" class="btn btn-default">Update</button>
+                    <br><br>
+                    <!--<input num="0" color="campus_outline_color" id="campus_outline_slider" css="campus_outlineop" data-slider-id='campus_outline_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
 
 
                 </center>
@@ -624,61 +659,76 @@
                   console.log("error: " + err);
                 });
 
+                
+
+                //var myColor = document.querySelector('input[name="building_color"]:checked').value;
+
+               
+
+
                 function createSelector(layer, sublayerList) {
-                    var $options2 = $(".layer_selector").find("input");
-
-                    /*<input id="smith_buildings_slider" data-slider-id='smith_buildings_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>*/
+                    var $option3 = $(".layer_selector").find("button");
 
 
-                    $options2.click(function(e) {
-                        var $input = $(e.target);
-                        var idName = $input.attr('id');
-                        var cssName = $input.attr('css');
-                        var idNum = $input.attr('num');
-                        var color = $input.attr('color');
+                    $option3.click(function(e) {
+                        var $radio = $(e.target);
+                        var selected = $radio.attr('data');
+                        var idNum = $radio.attr('id');
+                        var radios = document.getElementsByName("building_color");
+                        
+                
+                        for (var i = 0; i<radios.length; i++){
+                            console.log(i);
+                            console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var selected = radios[i].name;
+                                var idNum = radios[i].id;
+                                console.log("color", radios[i].value, myColor);
+                                console.log("s",selected, "#", idNum, radios.length);
 
-                        $('#'+idName).slider({
-                        formatter: function(value) {
-                            return 'Current value: ' + value;
+
+                            //break;
+                            }
                         }
+
+                        var sb = document.querySelector('input[name="building_color"]:checked').value;
+
+                        /**var pc = document.querySelector('input[name="parking_color"]:checked').value;
+
+                        var pubc = document.querySelector('input[name="public_color"]:checked').value;
+
+                        var tc = document.querySelector('input[name="trees_color"]:checked').value;
+
+                        var coc = document.querySelector('input[name="co_color"]:checked').value;
+
+                        var cpc = document.querySelector('input[name="cp_color"]:checked').value;**/
+
+                        /**layerCSS = $('#campus_outlineop1').text() + 
+                        coc + $('#campus_outlineop2').text() + 0.9 + 
+                        $('#campus_outlineop3').text()+ 
+                        $('#campuspathscleanop1').text() + 
+                        cpc + $('#campuspathscleanop2').text() + 0.9 + 
+                        $('#campuspathscleanop3').text()+ 
+                        $('#bg_treesop1').text() + 
+                        tc + $('#bg_treesop2').text() + 0.9 + 
+                        $('#bg_treesop3').text()+ 
+                        $('#public_artop1').text() + 
+                        pubc + $('#public_artop2').text() + 0.9 + 
+                        $('#public_artop3').text() +
+                        $('#parking_lotsop1').text() + 
+                        pc + $('#parking_lotsop2').text() + 0.9 + 
+                        $('#parking_lotsop3').text() + 
+                        $('#smith_buildingsop1').text() + 
+                        sb + $('#smith_buildingsop2').text() + 0.9 + 
+                        $('#smith_buildingsop3').text();**/
+
+                        layerCSS = $('#'+selected+'1').text() + myColor + $('#'+selected+'2').text();
+                        console.log("opcss", layerCSS);
+                        sublayerList[idNum].setCartoCSS(layerCSS);
                     });
 
-                    $('#'+idName).slider().on('slideStart', function(ev){
-                        originalVal = $('#'+idName).data('slider').getValue();
-                    });
-
-                    $('#'+idName).slider().on('slideStop', function(ev){
-                        var newVal = $('#'+idName).data('slider').getValue();
-
-                        if(originalVal != newVal) {
-                            console.log("new value", newVal);
-
-                            if (idNum == "0"){
-                                color = campus_outline_color;
-                            }
-                            if (idNum == "1"){
-                                color = campuspathsclean_color;
-                            }
-                            if (idNum == "2"){
-                                color = bg_trees_color;
-                            }
-                            if (idNum == "3"){
-                                color = public_art_color;
-                            }
-                            if (idNum == "4"){
-                                color = parking_lots_color;
-                            }
-                            if (idNum == "5"){
-                                color = smith_buildings_color;
-                            }
-                            // update layerCSS with newVal
-                            layerCSS = $('#'+cssName+'1').text() + color + $('#'+cssName+'2').text() + newVal + $('#'+cssName+'3').text();
-                            console.log("opcss", layerCSS);
-                            sublayerList[idNum].setCartoCSS(layerCSS);
-                        }
-                    });
-                    });
-                    
+                                        
                     var condition = ""; // SQL or CartoCSS string
                     //var $options = $(".layer_selector").find("li");
                     var $options = $(".layer_selector").find("li");
