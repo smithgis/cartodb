@@ -16,16 +16,11 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.min.css" type="text/css">
 
-        <!-- error using this stylesheet -->
-        <!--<link rel="stylesheet" href="http://academy.cartodb.com/css/cdbui.css" type="text/css" />-->
-
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
 
         <style type="text/css">
             html, body, #map {
@@ -193,20 +188,6 @@
                 }  
             </style>
 
-            <style type="cartocss/html" id="parking_lots1">
-                #parking_lots {
-                    polygon-fill: 
-            </style>
-
-            <style type="cartocss/html" id="parking_lots2">
-                ;
-                    polygon-opacity: 0.9;
-                    line-width: 1;
-                    line-color: #FFF;
-                    line-opacity: 0.5;
-                }  
-            </style>
-
             <style type="cartocss/html" id="parking_lotsop1">
                 #parking_lots {
                     polygon-fill: 
@@ -257,20 +238,6 @@
                 }
             </style>
 
-            
-
-            <style type="cartocss/html" id="campuspathsclean1">
-                #campuspathsclean {
-                    line-width: 1.5;
-                    line-color: 
-            </style>
-
-            <style type="cartocss/html" id="campuspathsclean2">
-                ;
-                    line-opacity: 1;
-                }
-            </style>
-
             <style type="cartocss/html" id="smith_buildings">
                 #smith_buildings {
                     polygon-fill: #a391ff;
@@ -303,20 +270,6 @@
                 }
             </style>
 
-            <style type="cartocss/html" id="smith_buildings1">
-                #smith_buildings {
-                    polygon-fill: 
-            </style>
-
-            <style type="cartocss/html" id="smith_buildings2">
-                ;
-                    polygon-opacity: 0.9;
-                    line-width: 1;
-                    line-color: #FFF;
-                    line-opacity: 0.5;
-                }
-            </style>
-
             <style type="cartocss/html" id="campus_outline">
                 #campus_outline {
                     polygon-fill: black;
@@ -343,22 +296,6 @@
             </style>
 
             <style type="cartocss/html" id="campus_outlineop4">;
-                    line-color: #FFF;
-                    line-opacity: 0.5;
-                }                
-            </style>
-
-
-
-            <style type="cartocss/html" id="campus_outline1">
-                #campus_outline {
-                    polygon-fill: 
-            </style>
-
-            <style type="cartocss/html" id="campus_outline2">
-                ;
-                    polygon-opacity: 0.41;
-                    line-width: 1;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }                
@@ -400,22 +337,6 @@
                 }
             </style>
 
-            <style type="cartocss/html" id="public_art1">
-                #public_art {
-                    marker-width: 10;
-                    marker-fill: 
-            </style>
-
-            <style type="cartocss/html" id="public_art2">
-                ;
-                    marker-fill-opacity: 1;
-                    marker-allow-overlap: true;
-                    marker-line-width: 1;
-                    marker-line-color: #FFF;
-                    marker-line-opacity: 1;
-                }
-            </style>
-
             <style type="cartocss/html" id="bg_trees">
                 #bg_trees {
                     marker-width: 7;
@@ -452,35 +373,14 @@
                 }
             </style>
 
-            <style type="cartocss/html" id="bg_trees1">
-                #bg_trees {
-                    marker-width: 7;
-                    marker-fill: 
-            </style>
-            
-
-            <style type="cartocss/html" id="bg_trees2">
-;
-                    marker-fill-opacity: 0.9;
-                    marker-allow-overlap: true;
-                    marker-line-width: 1;
-                    marker-line-color: #FFF;
-                    marker-line-opacity: 1;
-                }
-            </style>
-            
-            
-
     </head>
     <body>
         <div id="map"></div>
             <div id="cartocss" class="layer_selector">
-                
-
                 <p>CartoCSS Selectors</p>
                 <center>
                     <label name="smith_buildings" class="radio-inline" layer="building_color">Smith Buildings</label><br>
-                        <input type="radio" value = "navy" name="building_color" data="smith_buildings" id="5" color="navy"> Navy</input>
+                        Color: <input type="radio" value = "navy" name="building_color" data="smith_buildings" id="5" color="navy"> Navy</input>
                         <input type="radio" value ="purple" name="building_color" data="smith_buildings" id="5" color="navy"> Purple</input><br>
                         <form id="sb_form" action="form_action.asp">
                             Opacity: <input type="text" name="fname" value="0.5"><br>
@@ -489,11 +389,10 @@
                     Line Width:
                     <input type="range" id="sb_width" value="2" min="0" max="5">
 
-                    <!--<input num="5" color="smith_buildings_color" id="smith_buildings_slider" css="smith_buildingsop" data-slider-id='smith_buildings_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
-
                     <br>
+
                     <label name="parking_lots" class="radio-inline">Parking Lots</label><br>
-                        <input type="radio" value = "peru" name="parking_color" data="parking_lots" id="4" color="peru"> Tan</input>
+                        Color: <input type="radio" value = "peru" name="parking_color" data="parking_lots" id="4" color="peru"> Tan</input>
                         <input type="radio" value ="violet" name="parking_color" data="parking_lots" id="4" color="violet"> Violet</input>
                     <br>
                     <form id="pl_form" action="form_action.asp">
@@ -503,11 +402,10 @@
                     Line Width:
                     <input type="range" id="pl_width" value="2" min="0" max="5">
 
-                    <!--<button type="button2" class="btn btn-default">Submit</button>-->
-                    <!--<input num="4" color="parking_lots_color" id="parking_lots_slider" css="parking_lotsop" data-slider-id='parking_lots_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
+                    <br>
 
                     <label name="public_art" class="radio-inline">Public Art</label><br>
-                        <input type="radio" value = "red" name="public_color" data="public_art" id="3" color="red"> Red</input>
+                        Color: <input type="radio" value = "red" name="public_color" data="public_art" id="3" color="red"> Red</input>
                         <input type="radio" value ="orange" name="public_color" data="public_art" id="3" color="orange"> Orange</input>
                     <br>
                     <form id="pa_form" action="form_action.asp">
@@ -516,10 +414,11 @@
 
                     Line Width:
                     <input type="range" id="pa_width" value="2" min="0" max="5">
-                    <!--<input num="3" color="public_art_color" id="public_art_slider" css="public_artop" data-slider-id='public_art_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
+
+                    <br>
 
                     <label name="bg_trees" class="radio-inline">Trees</label><br>
-                        <input type="radio" value = "green" name="trees_color" ddata="bg_trees" id="2" color="green"> Green</input>
+                        Color: <input type="radio" value = "green" name="trees_color" ddata="bg_trees" id="2" color="green"> Green</input>
                         <input type="radio" value ="brown" name="trees_color" data="bg_trees" id="2" color="brown"> Brown</input>
                     <br>
                     <form id="t_form" action="form_action.asp">
@@ -529,10 +428,9 @@
                     <input type="range" id="t_width" value="2" min="0" max="5">
 
                     <br>
-                    <!--<input num="2" color="bg_trees_color" id="bg_trees_slider" css="bg_treesop" data-slider-id='bg_trees_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
 
                     <label name="campuspathsclean" class="radio-inline">Campus Paths</label><br>
-                        <input type="radio" value = "green" name="cp_color" data="campuspathsclean" id="1" color="gold"> Gold</input>
+                        Color: <input type="radio" value = "gold" name="cp_color" data="campuspathsclean" id="1" color="gold"> Gold</input>
                         <input type="radio" value ="teal" name="cp_color" data="campuspathsclean" id="1" color="teal"> Teal</input>
 
                     <br>
@@ -541,11 +439,11 @@
                     </form>
                     Line Width:
                     <input type="range" id="cp_width" value="2" min="0" max="5">
-                    <!--<input num="1" color="campuspathsclean_color" id="campuspathsclean_slider" css="campuspathscleanop" data-slider-id='campuspathsclean_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
 
                     <br>
+
                     <label name="campus_outline" class="radio-inline">Campus Outline</label><br>
-                        <input type="radio" value = "gray" name="co_color" ddata="campus_outline" id="0" color="gray"> Gray</input>
+                        Color: <input type="radio" value = "gray" name="co_color" ddata="campus_outline" id="0" color="gray"> Gray</input>
                         <input type="radio" value ="maroon" name="co_color" data="campus_outline" id="0" color="maroon"> Maroon</input>
                     <br>
                     <form id="co_form" action="form_action.asp">
@@ -554,9 +452,9 @@
                     Line Width:
                     <input type="range" id="co_width" value="2" min="0" max="5">
 
-                    <!--<input num="0" color="campus_outline_color" id="campus_outline_slider" css="campus_outlineop" data-slider-id='campus_outline_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>-->
                     <br>
-                    <button type="button" class="btn btn-default">Submit</button><br><br>
+                    <button type="button" class="btn btn-default">Submit</button>
+                    <br><br>
 
 
                 </center>
@@ -572,8 +470,6 @@
         <!-- Place your code in the script tags below -->
         <script type="text/javascript">
             window.onload = function () {
-
-                //console.log("value", newValue);
                 var layerOptions = {
                     user_name: 'smithgis',
                     type: 'cartodb',
@@ -617,16 +513,6 @@
               
                 var geom = "smith_buildings.the_geom_webmercator";
 
-                var originalVal, newVal;
-
-                // default colors
-                var smith_buildings_color = '#000000';
-                var parking_lots_color = '#696969';
-                var public_art_color = '#f08080';
-                var bg_trees_color = '#228b22';
-                var campuspathsclean_color = '#708090';
-                var campus_outline_color = '#b0c4de';
-
                 // Instantiate new map object, place it in 'map' element
                 var map_object = new L.Map('map', 
                     {
@@ -655,10 +541,10 @@
                 });
 
                 function createSelector(layer, sublayerList) {
-                    var $option3 = $(".layer_selector").find("button");
+                    var $layer = $(".layer_selector").find("button");
 
                     // smith buildings
-                    $option3.click(function(e) {
+                    $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
@@ -695,7 +581,7 @@
                     });
     
                     // parking lots
-                    $option3.click(function(e) {
+                    $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
@@ -730,7 +616,7 @@
                     });
     
                     // public art
-                    $option3.click(function(e) {
+                    $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
@@ -765,7 +651,7 @@
                     });
     
                     // trees
-                    $option3.click(function(e) {
+                    $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
@@ -801,7 +687,7 @@
                     });
     
                     // campus paths
-                    $option3.click(function(e) {
+                    $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
@@ -835,7 +721,7 @@
                     });
                     
                     // campus outline
-                    $option3.click(function(e) {
+                    $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
@@ -868,52 +754,6 @@
                             console.log("opcss", layerCSS);
                             sublayerList[0].setCartoCSS(layerCSS);
                     });
-
-
-                                        
-                    var condition = ""; // SQL or CartoCSS string
-                    //var $options = $(".layer_selector").find("li");
-                    var $options = $(".layer_selector").find("li");
-                    $options.click(function(e) {
-                        var $li = $(e.target);
-                        var selected = $li.attr('data');
-                        var idNum = $li.attr('id');
-                        var color = $li.attr('color');
-
-                        if (idNum == "0"){
-                            campus_outline_color = color;
-                        }
-                        if (idNum == "1"){
-                            campuspathsclean_color = color;
-                        }
-                        if (idNum == "2"){
-                            bg_trees_color = color;
-                        }
-                        if (idNum == "3"){
-                            public_art_color = color;
-                        }
-                        if (idNum == "4"){
-                            parking_lots_color = color;
-                        }
-                        if (idNum == "5"){
-                            smith_buildings_color = color;
-                        }
-
-                        //smith_buildings_color = color;
-
-                        console.log("li=",$li, "selected=",selected, "idnum=", idNum, "color=",color);
-                        //console.log("nv", newValue);
-                        console.log("new", newVal);
-
-                        console.log("selected=",selected);
-                        console.log(idNum);
-                        
-                        layerCSS = $('#'+selected+'1').text() + color + $('#'+selected+'2').text();
-                        console.log(layerCSS);
-                        sublayerList[idNum].setCartoCSS(layerCSS);
-
-                    });
-
                 }
                 
             }  
