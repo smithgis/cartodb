@@ -1,1 +1,1 @@
-# cartodb
+# blended learning project #1

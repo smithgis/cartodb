@@ -10,22 +10,19 @@
 
         <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
 
-        <link rel="stylesheet" href="cartodb.css" type="text/css" />
+        <!-- CartoDB CSS -->
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+        <!--<link rel="stylesheet" href="cartodb.css" type="text/css" />-->
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.css" type="text/css"/>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/css/bootstrap-slider.min.css" type="text/css">
-
-        <!-- error using this stylesheet -->
-        <!--<link rel="stylesheet" href="http://academy.cartodb.com/css/cdbui.css" type="text/css" />-->
 
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
 
         <style type="text/css">
             html, body, #map {
@@ -37,6 +34,7 @@
                 position: absolute;
                 top: 20px;
                 right: 20px;
+                overflow: scroll;
             }
             #sql {
                 position: absolute;
@@ -48,7 +46,9 @@
                 border-radius: 5px;
                 padding: 0;
                 border: 1px solid #999;
-                width: 250px;
+                width: 300px;
+                height: 500px;
+                overflow: scroll;
 
             }
             
@@ -133,51 +133,63 @@
             }
 
 
+            form #pl_width, #sb_width, #pa_width, #t_width, #cp_width, #co_width{
+                width:100px;
+                display: inline-block;
+            }
+
             </style>
            
             <style type="cartocss/html" id="default">
                 /** default visualization */
                 #campus_outline {
                     polygon-fill: #2a436e;
-                    polygon-opacity: 0.41;
+                    polygon-opacity: 1;
                     line-width: 1;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }
                 #campuspathsclean {
                     line-width: 1.5;
-                    line-color: #20635c;
+                    line-color: #dddddd;
                     line-opacity: 1;
                 }
                 #bg_trees {
                     marker-width: 7;
-                    marker-fill: #ff9a27;
+                    marker-fill: #2d663f;
                     marker-fill-opacity: 0.9;
                     marker-allow-overlap: true;
-                    marker-line-width: 1;
+                    marker-line-width: 0;
                     marker-line-color: #FFF;
-                    marker-line-opacity: 1;
+                    marker-line-opacity: 0;
                 }
                 #public_art {
                     marker-width: 10;
-                    marker-fill: #ff0c1d;
+                    marker-fill: #ffc430;
                     marker-fill-opacity: 1;
                     marker-allow-overlap: true;
-                    marker-line-width: 1;
+                    marker-line-width: 0;
                     marker-line-color: #FFF;
-                    marker-line-opacity: 1;
+                    marker-line-opacity: 0;
                 }
                 #smith_buildings {
-                    polygon-fill: #fff491; /** yellow poly fill**/
+                    polygon-fill: #3254d1;
                     polygon-opacity: 0.9;
                     line-width: 1;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }
                 #parking_lots {
-                    polygon-fill: #f26fe0;
+                    polygon-fill: #777777;
                     polygon-opacity: 0.9;
                     line-width: 1;
+                    line-color: #FFF;
+                    line-opacity: 0.5;
+                }
+                #new_shapefile{
+                    polygon-fill: #a0e2ff;
+                    polygon-opacity: 1;
+                    line-width: 0;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }        
@@ -186,20 +198,6 @@
             <style type="cartocss/html" id="parking_lots">
                 #parking_lots {
                     polygon-fill: #f26f6f;
-                    polygon-opacity: 0.9;
-                    line-width: 1;
-                    line-color: #FFF;
-                    line-opacity: 0.5;
-                }  
-            </style>
-
-            <style type="cartocss/html" id="parking_lots1">
-                #parking_lots {
-                    polygon-fill: 
-            </style>
-
-            <style type="cartocss/html" id="parking_lots2">
-                ;
                     polygon-opacity: 0.9;
                     line-width: 1;
                     line-color: #FFF;
@@ -219,7 +217,11 @@
 
             <style type="cartocss/html" id="parking_lotsop3">
 ;
-                    line-width: 1;
+                    line-width: 
+            </style>
+
+            <style type="cartocss/html" id="parking_lotsop4">
+;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }  
@@ -235,7 +237,6 @@
 
             <style type="cartocss/html" id="campuspathscleanop1">
                 #campuspathsclean {
-                    line-width: 1.5;
                     line-color: 
             </style>
 
@@ -246,20 +247,11 @@
 
             <style type="cartocss/html" id="campuspathscleanop3">
 ;
-                }
+                line-width: 
             </style>
 
-            
-
-            <style type="cartocss/html" id="campuspathsclean1">
-                #campuspathsclean {
-                    line-width: 1.5;
-                    line-color: 
-            </style>
-
-            <style type="cartocss/html" id="campuspathsclean2">
-                ;
-                    line-opacity: 1;
+            <style type="cartocss/html" id="campuspathscleanop4">
+;
                 }
             </style>
 
@@ -285,21 +277,11 @@
 
             <style type="cartocss/html" id="smith_buildingsop3">
 ;
-                    line-width: 1;
-                    line-color: #FFF;
-                    line-opacity: 0.5;
-                }
+                    line-width: 
             </style>
 
-            <style type="cartocss/html" id="smith_buildings1">
-                #smith_buildings {
-                    polygon-fill: 
-            </style>
-
-            <style type="cartocss/html" id="smith_buildings2">
-                ;
-                    polygon-opacity: 0.9;
-                    line-width: 1;
+            <style type="cartocss/html" id="smith_buildingsop4">
+;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }
@@ -307,7 +289,7 @@
 
             <style type="cartocss/html" id="campus_outline">
                 #campus_outline {
-                    polygon-fill: black;
+                    polygon-fill: #2a436e;
                     polygon-opacity: 0.41;
                     line-width: 1;
                     line-color: #FFF;
@@ -327,23 +309,10 @@
 
             <style type="cartocss/html" id="campus_outlineop3">
 ;
-                    line-width: 1;
-                    line-color: #FFF;
-                    line-opacity: 0.5;
-                }                
+                    line-width: 
             </style>
 
-
-
-            <style type="cartocss/html" id="campus_outline1">
-                #campus_outline {
-                    polygon-fill: 
-            </style>
-
-            <style type="cartocss/html" id="campus_outline2">
-                ;
-                    polygon-opacity: 0.41;
-                    line-width: 1;
+            <style type="cartocss/html" id="campus_outlineop4">;
                     line-color: #FFF;
                     line-opacity: 0.5;
                 }                
@@ -361,6 +330,30 @@
                 }
             </style>
 
+            <style type="cartocss/html" id="public_artw1">
+                #public_art {
+                    marker-width: 
+            </style>
+
+            <style type="cartocss/html" id="public_artw2">
+;
+                    marker-fill: 
+            </style>
+
+            <style type="cartocss/html" id="public_artw3">
+;
+                    marker-fill-opacity: 
+            </style>
+
+            <style type="cartocss/html" id="public_artw4">
+;
+                    marker-allow-overlap: true;
+                    marker-line-width: 0;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 0;
+                }
+            </style>
+
             <style type="cartocss/html" id="public_artop1">
                 #public_art {
                     marker-width: 10;
@@ -375,23 +368,11 @@
             <style type="cartocss/html" id="public_artop3">
 ;
                     marker-allow-overlap: true;
-                    marker-line-width: 1;
-                    marker-line-color: #FFF;
-                    marker-line-opacity: 1;
-                }
+                    marker-line-width: 
             </style>
 
-            <style type="cartocss/html" id="public_art1">
-                #public_art {
-                    marker-width: 10;
-                    marker-fill: 
-            </style>
-
-            <style type="cartocss/html" id="public_art2">
-                ;
-                    marker-fill-opacity: 1;
-                    marker-allow-overlap: true;
-                    marker-line-width: 1;
+            <style type="cartocss/html" id="public_artop4">
+;
                     marker-line-color: #FFF;
                     marker-line-opacity: 1;
                 }
@@ -409,6 +390,30 @@
                 }
             </style>
 
+            <style type="cartocss/html" id="bg_treesw1">
+                #bg_trees {
+                    marker-width: 
+            </style>
+
+            <style type="cartocss/html" id="bg_treesw2">
+;
+                    marker-fill: 
+            </style>
+
+            <style type="cartocss/html" id="bg_treesw3">
+;
+                    marker-fill-opacity: 
+            </style>
+
+            <style type="cartocss/html" id="bg_treesw4">
+;
+                    marker-allow-overlap: true;
+                    marker-line-width: 0;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 0;
+                }
+            </style>
+
             <style type="cartocss/html" id="bg_treesop1">
                 #bg_trees {
                     marker-width: 7;
@@ -423,160 +428,176 @@
             <style type="cartocss/html" id="bg_treesop3">
 ;
                     marker-allow-overlap: true;
-                    marker-line-width: 1;
-                    marker-line-color: #FFF;
-                    marker-line-opacity: 1;
-                }
+                    marker-line-width: 
             </style>
 
-            <style type="cartocss/html" id="bg_trees1">
-                #bg_trees {
-                    marker-width: 7;
-                    marker-fill: 
-            </style>
-            
-
-            <style type="cartocss/html" id="bg_trees2">
+            <style type="cartocss/html" id="bg_treesop4">
 ;
-                    marker-fill-opacity: 0.9;
-                    marker-allow-overlap: true;
-                    marker-line-width: 1;
                     marker-line-color: #FFF;
                     marker-line-opacity: 1;
                 }
             </style>
-            
-            
 
     </head>
     <body>
         <div id="map"></div>
             <div id="cartocss" class="layer_selector">
-                
-
-                <p>CartoCSS Selectors</p>
+                <br>
                 <center>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="smith_buildings" data-type="cartocss" id="5">Smith Buildings <b class="caret"></b></ul>
-                      <ul class="dropdown-menu">
-                        <li data="smith_buildings" id="5" color="navy">Navy</li>
-                        <li data="smith_buildings" id="5" color="purple">Purple</li>
-                      </ul>
-                    </li>
+                    <!-- smith buildings -->
+                    <b>Smith Buildings</b><br>
+                    Color: <input type="radio" value ="#3254d1" name="building_color" data="smith_buildings" id="5" color="#3254d1" checked="checked"> blue</input>
+                    <input type="radio" value = "#a3a3a3" name="building_color" data="smith_buildings" id="5" color="#a3a3a3"> light gray</input>
+                    <input type="radio" value ="#4f4f4f" name="building_color" data="smith_buildings" id="5" color="#4f4f4f"> dark gray</input>
+                    
+                    <form id="sb_form" action="form_action.asp">
+                        Opacity: <input type="text" name="fname" value="100" size="4">%
+                    </form> 
+                    
+                    <form>
+                        Line Width:
+                        <input type="range" id="sb_width" name="sb_amountRange" min="0" max="5" value="2" oninput="this.form.sb_amountInput.value=this.value" /> <input type="number" id="sb_width_box" name="sb_amountInput" min="0" max="5" value="2" oninput="this.form.sb_amountRange.value=this.value"/>px
+                    </form>
 
                     <br>
-                    <input num="5" color="smith_buildings_color" id="smith_buildings_slider" css="smith_buildingsop" data-slider-id='smith_buildings_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+
+                    <!-- parking lots -->
+                    <b>Parking Lots</b><br>
+                    Color: <input type="radio" value ="#777777" name="parking_color" data="parking_lots" id="4" color="#777777" checked="checked"> med gray</input>
+                    <input type="radio" value = "#f2f2f2" name="parking_color" data="parking_lots" id="4" color="#f2f2f2"> off-white</input>
+                    <input type="radio" value ="#dddddd" name="parking_color" data="parking_lots" id="4" color="#dddddd"> ??</input>
+
+                    <form id="pl_form" action="form_action.asp">
+                            Opacity: <input type="text" name="fname" value="100" size="4">%
+                    </form> 
+
+                    <form>
+                        Line Width:
+                        <input type="range" id="pl_width" name="pl_amountRange" min="0" max="5" value="2" oninput="this.form.pl_amountInput.value=this.value" /> <input type="number" id="pl_width_box" name="pl_amountInput" min="0" max="5" value="2" oninput="this.form.pl_amountRange.value=this.value"/>px
+                    </form>
 
                     <br>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="parking_lots" data-type="cartocss" id="4">Parking Lots <b class="caret"></b></ul>
-                      <ul class="dropdown-menu">
-                        <li data="parking_lots" id="4" color="violet">Pink</li>
-                        <li data="parking_lots" id="4" color="peru">Tan</li>
-                      </ul>
-                    </li>
+
+                    <!-- public art -->
+                    <b>Public Art</b><br>
+                    Color: <input type="radio" value = "#ffc430" name="public_color" data="public_art" id="3" color="#ffc430" checked="checked"> orange</input>
+                    <input type="radio" value ="#8719c8" name="public_color" data="public_art" id="3" color="#8719c8"> purple</input>
+                    <input type="radio" value ="#7279db" name="public_color" data="public_art" id="3" color="#7279db"> periwinkle</input>
+
+                    <form id="pa_form" action="form_action.asp">
+                            Opacity: <input type="text" name="fname" value="100" size="4">%
+                    </form> 
+
+                    <form>
+                        Marker Width:
+                        <input type="range" id="pa_width" name="pa_amountRange" min="0" max="20" value="10" oninput="this.form.pa_amountInput.value=this.value" /> <input type="number" id="pa_width_box" name="pa_amountInput" min="0" max="20" value="10" oninput="this.form.pa_amountRange.value=this.value"/>px
+                    </form>
 
                     <br>
-                    <input num="4" color="parking_lots_color" id="parking_lots_slider" css="parking_lotsop" data-slider-id='parking_lots_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+
+                    <!-- trees -->
+                    <b>Trees</b><br>
+                    Color: <input type="radio" value ="#2d663f" name="trees_color" data="bg_trees" id="2" color="#2d663f" checked="checked"> dark green</input>
+                    <input type="radio" value = "#cee0d4" name="trees_color" ddata="bg_trees" id="2" color="#cee0d4"> light green</input>
+                    <input type="radio" value ="#08c945" name="trees_color" data="bg_trees" id="2" color="#08c945"> green</input>
+                    
+                    <form id="t_form" action="form_action.asp">
+                        Opacity: <input type="text" name="fname" value="100" size="4">%
+                    </form>
+
+                    <form>
+                        Marker Width:
+                        <input type="range" id="t_width" name="t_amountRange" min="0" max="20" value="10" oninput="this.form.t_amountInput.value=this.value" /> <input type="number" id="t_width_box" name="t_amountInput" min="0" max="20" value="10" oninput="this.form.t_amountRange.value=this.value"/>px
+                    </form>
 
                     <br>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="public_art" data-type="cartocss" id="3">Public Art <b class="caret"></b></ul>
-                      <ul class="dropdown-menu">
-                        <li data="public_art" id="3" color="red">Red</li>
-                        <li data="public_art" id="3" color="orange">Orange</li>
-                      </ul>
-                    </li>
+
+                    <!-- campus paths -->
+                    <b>Campus Path</b><br>
+                    Color: <input type="radio" value = "#dddddd" name="cp_color" data="campuspathsclean" id="1" color="#dddddd" checked="checked"> ??</input>
+                    <input type="radio" value = "#f2f2f2" name="cp_color" data="campuspathsclean" id="1" color="#f2f2f2"> off-white</input>
+                    <input type="radio" value ="#777777" name="cp_color" data="campuspathsclean" id="1" color="#777777"> med gray</input>
+
+                    <form id="cp_form" action="form_action.asp">
+                        Opacity: <input type="text" name="fname" value="100" size="4">%
+                    </form>
+                    
+                    <form>
+                        Line Width:
+                        <input type="range" id="cp_width" name="cp_amountRange" min="0" max="5" value="2" oninput="this.form.cp_amountInput.value=this.value" /> <input type="number" id="cp_width_box" name="cp_amountInput" min="0" max="5" value="2" oninput="this.form.cp_amountRange.value=this.value"/>px
+                    </form>
 
                     <br>
-                    <input num="3" color="public_art_color" id="public_art_slider" css="public_artop" data-slider-id='public_art_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
 
-                    <br>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="bg_trees" data-type="cartocss" id="2">Trees <b class="caret"></b></ul>
-                      <ul class="dropdown-menu">
-                        <li data="bg_trees" id="2" color="green">Green</li>
-                        <li data="bg_trees" id="2" color="brown">Brown</li>
-                      </ul>
-                    </li>
+                    <!-- campus outline -->
+                    <b>Campus Outline</b><br>
+                    Color: <input type="radio" value ="#2a436e" name="co_color" data="campus_outline" id="0" color="#2a436e" checked="checked"> navy</input>
+                    <input type="radio" value = "#f4f4f4" name="co_color" ddata="campus_outline" id="0" color="#f4f4f4"> off-white</input>
+                    <input type="radio" value ="#2b2b2b" name="co_color" data="campus_outline" id="0" color="#2b2b2b"> dark gray</input>
 
-                    <br>
-                    <input num="2" color="bg_trees_color" id="bg_trees_slider" css="bg_treesop" data-slider-id='bg_trees_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
+                    <form id="co_form" action="form_action.asp">
+                            Opacity: <input type="text" name="fname" value="100" size="4">%
+                    </form> 
 
-                    <br>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="campuspathsclean" data-type="cartocss" id="1">Campus Paths <b class="caret"></b></ul>
-                      <ul class="dropdown-menu">
-                        <li data="campuspathsclean" id="1" color="gold">Yellow</li>
-                        <li data="campuspathsclean" id="1" color="teal">Teal</li>
-                      </ul>
-                    </li>
+                    <form>
+                        Line Width:
+                        <input type="range" id="co_width" name="co_amountRange" min="0" max="5" value="2" oninput="this.form.co_amountInput.value=this.value" /> <input type="number" id="co_width_box" name="co_amountInput" min="0" max="5" value="2" oninput="this.form.co_amountRange.value=this.value"/>px
+                    </form>
 
-                    <br>
-                    <input num="1" color="campuspathsclean_color" id="campuspathsclean_slider" css="campuspathscleanop" data-slider-id='campuspathsclean_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
-
-                    <br>
-                    <li class="dropdown">
-                      <ul class="dropdown-toggle" data-toggle="dropdown" data="campus_outline" data-type="cartocss" id="0">Campus Outline <b class="caret"></b></ul>
-                      <ul class="dropdown-menu">
-                        <li data="campus_outline" id="0" color="gray">Gray</li>
-                        <li data="campus_outline" id="0" color="maroon">Maroon</li>
-                      </ul>
-                    </li>
-
-                    <br>
-                    <input num="0" color="campus_outline_color" id="campus_outline_slider" css="campus_outlineop" data-slider-id='campus_outline_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>
-
-
+                    <button type="button" class="btn btn-default">Submit</button>
+                    <br><br>
                 </center>
             </div>
         </div>
 
         <!-- include cartodb.js library -->
-        <script src="cartodb.js" type="text/javascript"></script>
+        <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
+        <!--<script src="cartodb.js" type="text/javascript"></script>-->
 
         <!-- bootstrap-slider.js library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.min.js" type="text/javascript"></script>
 
         <!-- Place your code in the script tags below -->
         <script type="text/javascript">
             window.onload = function () {
-
-                //console.log("value", newValue);
                 var layerOptions = {
                     user_name: 'smithgis',
                     type: 'cartodb',
                     sublayers: [{
                         sql: 'SELECT * from campus_outline',
-                        cartocss: '#campus_outline {polygon-fill: #b0c4de;polygon-opacity: 0.41;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
+                        cartocss: 'Map{background-color: white; } #campus_outline {polygon-fill: #2a436e;polygon-opacity: 1;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
                         interactivity: 'cartodb_id'
                         },
                         {
                         sql: 'SELECT * from campuspathsclean',
-                        cartocss: '#campuspathsclean {line-width: 1.5;line-color: #708090;line-opacity: 1;}',
+                        cartocss: '#campuspathsclean {line-width: 1.5;line-color: #dddddd;line-opacity: 1;}',
                         interactivity: 'cartodb_id'
                         },
                         {
                         sql: 'SELECT * from bg_trees',
-                        cartocss: '#bg_trees {marker-width: 7;marker-fill: #228b22;marker-fill-opacity: 0.9;marker-allow-overlap: true;marker-line-width: 1;marker-line-color: #FFF;marker-line-opacity: 1;}',
+                        cartocss: '#bg_trees {marker-width: 7;marker-fill: #2d663f;marker-fill-opacity: 0.9;marker-allow-overlap: true;marker-line-width: 0;marker-line-color: #FFF;marker-line-opacity: 0;}',
                         interactivity: 'cartodb_id'
                         },
                         {
                         sql: 'SELECT * from public_art',
-                        cartocss: '#public_art {marker-width: 10;marker-fill: #f08080;marker-fill-opacity: 1;marker-allow-overlap: true;marker-line-width: 1;marker-line-color: #FFF;marker-line-opacity: 1;}',
+                        cartocss: '#public_art {marker-width: 10;marker-fill: #ffc430;marker-fill-opacity: 1;marker-allow-overlap: true;marker-line-width: 0;marker-line-color: #FFF;marker-line-opacity: 0;}',
                         interactivity: 'cartodb_id'
                         },
                         {
                         sql: 'SELECT * from parking_lots',
-                        cartocss: '#parking_lots {polygon-fill: #696969;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
+                        cartocss: '#parking_lots {polygon-fill: #777777;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
                         interactivity: 'cartodb_id'
                         },
                         {
                         sql: 'SELECT * from smith_buildings',
-                        cartocss: '#smith_buildings {polygon-fill: #000000;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
+                        cartocss: 'Map{background-color: white; } #smith_buildings {polygon-fill: #3254d1;polygon-opacity: 0.9;line-width: 1;line-color: #FFF;line-opacity: 0.5;}',
                         interactivity: 'cartodb_id'
-                    }]
+                        },
+                        {
+                        sql: 'SELECT * from new_shapefile',
+                        cartocss: '#new_shapefile {polygon-fill: #a0e2ff;polygon-opacity: 1;line-width: 0;line-color: #FFF;line-opacity: 0.5;}',
+                        interactivity: 'cartodb_id'
+                        }]
                 };
               
               
@@ -587,16 +608,6 @@
               
                 var geom = "smith_buildings.the_geom_webmercator";
 
-                var originalVal, newVal;
-
-                // default colors
-                var smith_buildings_color = '#000000';
-                var parking_lots_color = '#696969';
-                var public_art_color = '#f08080';
-                var bg_trees_color = '#228b22';
-                var campuspathsclean_color = '#708090';
-                var campus_outline_color = '#b0c4de';
-
                 // Instantiate new map object, place it in 'map' element
                 var map_object = new L.Map('map', 
                     {
@@ -604,9 +615,9 @@
                     zoom: 16
                     });
 
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+                /**L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
                     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-                    }).addTo(map_object);
+                    }).addTo(map_object);**/
 
                 // Add data layer to your map
                 cartodb.createLayer(map_object, layerOptions)
@@ -625,105 +636,219 @@
                 });
 
                 function createSelector(layer, sublayerList) {
-                    var $options2 = $(".layer_selector").find("input");
+                    var $layer = $(".layer_selector").find("button");
 
-                    /*<input id="smith_buildings_slider" data-slider-id='smith_buildings_Slider' type="text" data-slider-min="0" data-slider-max="1" data-slider-step="0.1" data-slider-value="0.5"/>*/
+                    // smith buildings
+                    $layer.click(function(e) {
+                        var $button = $(e.target);
+                        var name = $button.attr('name');
+                        var layerName = $button.attr('layer');
+                        //console.log(name, layerName);
 
-
-                    $options2.click(function(e) {
-                        var $input = $(e.target);
-                        var idName = $input.attr('id');
-                        var cssName = $input.attr('css');
-                        var idNum = $input.attr('num');
-                        var color = $input.attr('color');
-
-                        $('#'+idName).slider({
-                        formatter: function(value) {
-                            return 'Current value: ' + value;
+                        // get color
+                        var radios = document.getElementsByName("building_color");
+                        //console.log("hi", radios.length);
+                
+                        for (var i = 0; i<radios.length; i++){
+                            //console.log(i);
+                            //console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var idNum = radios[i].id;
+                                //console.log("color", radios[i].value, myColor);
+                            }
                         }
-                    });
 
-                    $('#'+idName).slider().on('slideStart', function(ev){
-                        originalVal = $('#'+idName).data('slider').getValue();
-                    });
-
-                    $('#'+idName).slider().on('slideStop', function(ev){
-                        var newVal = $('#'+idName).data('slider').getValue();
-
-                        if(originalVal != newVal) {
-                            console.log("new value", newVal);
-
-                            if (idNum == "0"){
-                                color = campus_outline_color;
-                            }
-                            if (idNum == "1"){
-                                color = campuspathsclean_color;
-                            }
-                            if (idNum == "2"){
-                                color = bg_trees_color;
-                            }
-                            if (idNum == "3"){
-                                color = public_art_color;
-                            }
-                            if (idNum == "4"){
-                                color = parking_lots_color;
-                            }
-                            if (idNum == "5"){
-                                color = smith_buildings_color;
-                            }
-                            // update layerCSS with newVal
-                            layerCSS = $('#'+cssName+'1').text() + color + $('#'+cssName+'2').text() + newVal + $('#'+cssName+'3').text();
-                            console.log("opcss", layerCSS);
-                            sublayerList[idNum].setCartoCSS(layerCSS);
+                        // get opacity
+                        var sb_op = document.getElementById("sb_form");
+                        var opacity = "";
+                        for (var i = 0; i < sb_op.length ;i++) {
+                            opacity += sb_op.elements[i].value * .01;
                         }
+
+                        var width = document.getElementById("sb_width").value;
+                        //console.log("********", width);
+
+
+                        layerCSS = $('#smith_buildingsop1').text() + myColor + $('#smith_buildingsop2').text() + opacity + $('#smith_buildingsop3').text() + width + $('#smith_buildingsop4').text();
+                            //console.log("opcss", layerCSS);
+                            sublayerList[5].setCartoCSS(layerCSS);
                     });
+    
+                    // parking lots
+                    $layer.click(function(e) {
+                        var $button = $(e.target);
+                        var name = $button.attr('name');
+                        var layerName = $button.attr('layer');
+                        //console.log(name, layerName);
+
+                        var radios = document.getElementsByName("parking_color");
+                        //console.log("hi", radios.length);
+                
+                        for (var i = 0; i<radios.length; i++){
+                            //console.log(i);
+                            //console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var idNum = radios[i].id;
+
+                                //console.log("color", radios[i].value, myColor);
+                            }
+                        }
+
+                        // get opacity
+                        var pl_op = document.getElementById("pl_form");
+                        var opacity = "";
+                        for (var i = 0; i < pl_op.length ;i++) {
+                            opacity += pl_op.elements[i].value * .01;
+                        }
+
+                        var width = document.getElementById("pl_width").value;
+
+                        layerCSS = $('#parking_lotsop1').text() + myColor + $('#parking_lotsop2').text() + opacity + $('#parking_lotsop3').text() + width + $('#parking_lotsop4').text();
+                            //console.log("opcss", layerCSS);
+                            sublayerList[4].setCartoCSS(layerCSS);
+                    });
+    
+                    // public art
+                    $layer.click(function(e) {
+                        var $button = $(e.target);
+                        var name = $button.attr('name');
+                        var layerName = $button.attr('layer');
+                        //console.log(name, layerName);
+
+                        var radios = document.getElementsByName("public_color");
+                        //console.log("hi", radios.length);
+                
+                        for (var i = 0; i<radios.length; i++){
+                            //console.log(i);
+                            //console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var idNum = radios[i].id;
+
+                                //console.log("color", radios[i].value, myColor);
+                            }
+                        }
+
+                        // get opacity
+                        var pa_op = document.getElementById("pa_form");
+                        var opacity = "";
+                        for (var i = 0; i < pa_op.length ;i++) {
+                            opacity += pa_op.elements[i].value * .01;
+                        }
+
+                        var width = document.getElementById("pa_width").value;
+
+                        layerCSS = $('#public_artw1').text() + width + $('#public_artw2').text() + myColor + $('#public_artw3').text() + opacity + $('#public_artw4').text();
+                            //console.log("opcss", layerCSS);
+                            sublayerList[3].setCartoCSS(layerCSS);
+                    });
+    
+                    // trees
+                    $layer.click(function(e) {
+                        var $button = $(e.target);
+                        var name = $button.attr('name');
+                        var layerName = $button.attr('layer');
+                        //console.log(name, layerName);
+
+                        var radios = document.getElementsByName("trees_color");
+                        //console.log("hi", radios.length);
+                
+                        for (var i = 0; i<radios.length; i++){
+                            //console.log(i);
+                            //console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var idNum = radios[i].id;
+
+                                //console.log("color", radios[i].value, myColor);
+                            }
+                        }
+
+                        // get opacity
+                        var t_op = document.getElementById("t_form");
+                        var opacity = "";
+                        for (var i = 0; i < t_op.length ;i++) {
+                            opacity += t_op.elements[i].value * .01;
+                        }
+
+                        var width = document.getElementById("t_width").value;
+                        
+
+                        layerCSS = $('#bg_treesw1').text() + width + $('#bg_treesw2').text() + myColor + $('#bg_treesw3').text()+ opacity + $('#bg_treesw4').text();
+                            //console.log("opcss", layerCSS);
+                            sublayerList[2].setCartoCSS(layerCSS);
+                    });
+    
+                    // campus paths
+                    $layer.click(function(e) {
+                        var $button = $(e.target);
+                        var name = $button.attr('name');
+                        var layerName = $button.attr('layer');
+                        //console.log(name, layerName);
+
+                        var radios = document.getElementsByName("cp_color");
+                        //console.log("hi", radios.length);
+                
+                        for (var i = 0; i<radios.length; i++){
+                            //console.log(i);
+                            //console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var idNum = radios[i].id;
+
+                                //console.log("color", radios[i].value, myColor);
+                            }
+                        }
+                        // get opacity
+                        var cp_op = document.getElementById("cp_form");
+                        var opacity = "";
+                        for (var i = 0; i < cp_op.length ;i++) {
+                            opacity += cp_op.elements[i].value * .01;
+                        }
+
+                        var width = document.getElementById("cp_width").value;
+
+                        layerCSS = $('#campuspathscleanop1').text() + myColor + $('#campuspathscleanop2').text() + opacity + $('#campuspathscleanop3').text()+ width + $('#campuspathscleanop4').text();
+                            //console.log("opcss", layerCSS);
+                            sublayerList[1].setCartoCSS(layerCSS);
                     });
                     
-                    var condition = ""; // SQL or CartoCSS string
-                    //var $options = $(".layer_selector").find("li");
-                    var $options = $(".layer_selector").find("li");
-                    $options.click(function(e) {
-                        var $li = $(e.target);
-                        var selected = $li.attr('data');
-                        var idNum = $li.attr('id');
-                        var color = $li.attr('color');
+                    // campus outline
+                    $layer.click(function(e) {
+                        var $button = $(e.target);
+                        var name = $button.attr('name');
+                        var layerName = $button.attr('layer');
+                        //console.log(name, layerName);
 
-                        if (idNum == "0"){
-                            campus_outline_color = color;
-                        }
-                        if (idNum == "1"){
-                            campuspathsclean_color = color;
-                        }
-                        if (idNum == "2"){
-                            bg_trees_color = color;
-                        }
-                        if (idNum == "3"){
-                            public_art_color = color;
-                        }
-                        if (idNum == "4"){
-                            parking_lots_color = color;
-                        }
-                        if (idNum == "5"){
-                            smith_buildings_color = color;
-                        }
-
-                        //smith_buildings_color = color;
-
-                        console.log("li=",$li, "selected=",selected, "idnum=", idNum, "color=",color);
-                        //console.log("nv", newValue);
-                        console.log("new", newVal);
-
-                        console.log("selected=",selected);
-                        console.log(idNum);
-                        
-                        layerCSS = $('#'+selected+'1').text() + color + $('#'+selected+'2').text();
-                        console.log(layerCSS);
-                        sublayerList[idNum].setCartoCSS(layerCSS);
-
-                    });
-
-                }
+                        var radios = document.getElementsByName("co_color");
                 
+                        for (var i = 0; i<radios.length; i++){
+                            //console.log(i);
+                            //console.log(radios[i].value);
+                            if(radios[i].checked){
+                                var myColor = radios[i].value;
+                                var idNum = radios[i].id;
+
+                                //console.log("color", radios[i].value, myColor);
+                            }
+                        }
+
+                        // get opacity
+                        var co_op = document.getElementById("co_form");
+                        var opacity = "";
+                        for (var i = 0; i < co_op.length ;i++) {
+                            opacity += co_op.elements[i].value * .01;
+                        }
+
+                        var width = document.getElementById("co_width").value;
+                        
+                        layerCSS = $('#campus_outlineop1').text() + myColor + $('#campus_outlineop2').text() + opacity + $('#campus_outlineop3').text()+ width + $('#campus_outlineop4').text() + "Map{background-color: white; }";
+                            //console.log("opcss", layerCSS);
+                            sublayerList[0].setCartoCSS(layerCSS);
+                    });
+                }
             }  
         </script>
     </body>
