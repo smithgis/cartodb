@@ -138,6 +138,11 @@
                 display: inline-block;
             }
 
+            img {
+                width: 15px;
+                height: auto;
+            }
+
             </style>
            
             <style type="cartocss/html" id="default">
@@ -477,9 +482,12 @@
                 <center>
                     <!-- dbh trees -->
                     <b>Dbh Trees</b><br>
-                    Color: <input type="radio" value ="#3254d1" name="dbh_color" data="dbh" id="5" color="#3254d1" checked="checked"> blue</input>
-                    <input type="radio" value = "#a3a3a3" name="dbh_color" data="dbh" id="5" color="#a3a3a3"> light gray</input>
-                    <input type="radio" value ="#4f4f4f" name="dbh_color" data="dbh" id="5" color="#4f4f4f"> dark gray</input>
+                    Color: <input type="radio" value ="#3254d1" name="dbh_color" data="dbh" id="5" color="#3254d1" checked="checked">
+                    <img src="colors/3254d1.jpg"></input>
+                    <input type="radio" value = "#a3a3a3" name="dbh_color" data="dbh" id="5" color="#a3a3a3">
+                    <img src="colors/a3a3a3.jpg"></input>
+                    <input type="radio" value ="#4f4f4f" name="dbh_color" data="dbh" id="5" color="#4f4f4f">
+                    <img src="colors/4f4f4f.jpg"></input>
 
                     <form>
                         Size: <input type="range" id="dbh_width" name="dbh_amountRange" min="0" max="20" value="10" oninput="this.form.dbh_amountInput.value=this.value" /> <input type="number" id="dbh_width_box" name="dbh_amountInput" min="0" max="20" value="10" oninput="this.form.dbh_amountRange.value=this.value"/>px
