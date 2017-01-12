@@ -15,7 +15,7 @@ Layers:
 
 Layers can be modified with the options on the right sidebar, such as change in color, opacity, and line/marker width. 
 
-* Layer is static.
+*Layer is static.
 
 ## blended learning project #2
 
@@ -31,4 +31,4 @@ Layers:
 
 Layers can be modified with the options on the right sidebar, such as change in color, and size. 
 
-* Layer is static.
+*Layer is static.
