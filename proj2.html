@@ -481,7 +481,7 @@
                 <br>
                 <center>
                     <!-- dbh trees -->
-                    <b>Dbh Trees</b><br>
+                    <b>DBH Trees</b><br>
                     Color: <input type="radio" value ="#3254d1" name="dbh_color" data="dbh" id="5" color="#3254d1" checked="checked">
                     <img src="colors/3254d1.jpg"></input>
                     <input type="radio" value = "#a3a3a3" name="dbh_color" data="dbh" id="5" color="#a3a3a3">
@@ -493,8 +493,8 @@
                         Size: <input type="range" id="dbh_width" name="dbh_amountRange" min="0" max="20" value="10" oninput="this.form.dbh_amountInput.value=this.value" /> <input type="number" id="dbh_width_box" name="dbh_amountInput" min="0" max="20" value="10" oninput="this.form.dbh_amountRange.value=this.value"/>px
                     </form>
                     
-                    <button type="button" class="btn btn-default">Submit</button>
-                    <br><br>
+                    <!--<button type="button" class="btn btn-default">Submit</button>
+                    <br>--><br>
                 </center>
             </div>
         </div>
@@ -596,7 +596,7 @@
                 });
 
                 function createSelector(layer, sublayerList) {
-                    var $layer = $(".layer_selector").find("button");
+                    var $layer = $(".layer_selector").find("input");
 
                     // dbh
                     $layer.click(function(e) {
@@ -628,6 +628,31 @@
                             sublayerList[7].setCartoCSS(layerCSS);
                     });
                 }
+
+                /**function createSelector(layer, sublayerList) {
+                    var condition = ""; // SQL or CartoCSS string
+                    //var $options = $(".layer_selector").find("li");
+                    var $options = $(".layer_selector").find("input");
+                    $options.click(function(e) {
+                        var $li = $(e.target);
+                        var selected = $li.attr('data');
+                        var idNum = $li.attr('id');
+                        var color = $li.attr('color');
+
+                        console.log("li=",$li, "selected=",selected, "idnum=", idNum, "color=",color);
+
+                        console.log("selected=",selected);
+
+                        console.log(idNum);
+
+                        layerCSS = $('#dbh_1').text() + 10 + $('#dbh_2').text() + color + $('#dbh_3').text();
+                        console.log(layerCSS);
+                        sublayerList[idNum].setCartoCSS(layerCSS);
+
+                        var prevColor = color;
+                    });
+
+                }**/
             }  
         </script>
     </body>

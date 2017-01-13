@@ -566,7 +566,7 @@
                         Line Width:
                         <input type="range" id="co_width" name="co_amountRange" min="0" max="5" value="2" oninput="this.form.co_amountInput.value=this.value" /> <input type="number" id="co_width_box" name="co_amountInput" min="0" max="5" value="2" oninput="this.form.co_amountRange.value=this.value"/>px
                     </form>
-                    <button type="button" class="btn btn-default">Submit</button>
+                    <button type="submit" id="submitbutton" class="btn btn-default">Submit</button>
                     <br><br>
                 </center>
             </div>
@@ -659,13 +659,8 @@
 
                 function createSelector(layer, sublayerList) {
                     var $layer = $(".layer_selector").find("button");
-                    var $reset = $(".layer_selector").find("reset");
 
-                    $reset.click(function(e) {
-                        layerCSS = $('#default').text();
-                        console.log(layerCSS);
-                        layer.setCartoCSS(layerCSS);
-                    });
+                    console.log("mylayer",$layer);
 
                     // smith buildings
                     $layer.click(function(e) {
