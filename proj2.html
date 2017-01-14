@@ -139,7 +139,7 @@
             }
 
             img {
-                width: 15px;
+                width: 60px;
                 height: auto;
             }
 
@@ -321,6 +321,73 @@
                 }
             </style>
 
+            <style type="cartocss/html" id="dbh_size">
+                #dbh_bg_trees {
+                    marker-width: ramp([dbhnum], range(3, 16), quantiles(5));
+                    marker-fill: #ffa939;
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
+                }
+            </style>
+
+            <style type="cartocss/html" id="dbh_size_1">
+                #dbh_bg_trees {
+                    marker-width: ramp([dbhnum], range(
+            </style>
+
+            <style type="cartocss/html" id="dbh_size_2">
+), quantiles(5));
+                marker-fill: #ffa939;
+                marker-fill-opacity: 1;
+                marker-allow-overlap: true;
+                marker-line-width: 1;
+                marker-line-color: #FFF;
+                marker-line-opacity: 1;
+            }
+            </style>
+
+            <!-- orange gradient -->
+            <style type="cartocss/html" id="dbh_color_1">
+                #dbh_bg_trees {
+                    marker-width: 10;
+                    marker-fill: ramp([dbhnum], (#ffffd4, #fed98e, #fe9929, #d95f0e, #993404), quantiles);
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
+                }
+            </style>
+
+            <!-- green gradient -->
+            <style type="cartocss/html" id="dbh_color_2">
+                #dbh_bg_trees {
+                    marker-width: 10;
+                    marker-fill: ramp([dbhnum], (#c4e6c3, #80c799, #4da284, #2d7974, #1d4f60), quantiles);
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
+                }
+            </style>
+
+            <!-- pink gradient -->
+            <style type="cartocss/html" id="dbh_color_3">
+                #dbh_bg_trees {
+                    marker-width: 10;
+                    marker-fill: ramp([dbhnum], (#ffc6c4, #ee919b, #cc607d, #9e3963, #672044), quantiles);
+                    marker-fill-opacity: 1;
+                    marker-allow-overlap: true;
+                    marker-line-width: 1;
+                    marker-line-color: #FFF;
+                    marker-line-opacity: 1;
+                }
+            </style>
+
             <style type="cartocss/html" id="campus_outline">
                 #campus_outline {
                     polygon-fill: #2a436e;
@@ -482,15 +549,15 @@
                 <center>
                     <!-- dbh trees -->
                     <b>DBH Trees</b><br>
-                    Color: <input type="radio" value ="#3254d1" name="dbh_color" data="dbh" id="5" color="#3254d1" checked="checked">
-                    <img src="colors/3254d1.jpg"></input>
-                    <input type="radio" value = "#a3a3a3" name="dbh_color" data="dbh" id="5" color="#a3a3a3">
-                    <img src="colors/a3a3a3.jpg"></input>
-                    <input type="radio" value ="#4f4f4f" name="dbh_color" data="dbh" id="5" color="#4f4f4f">
-                    <img src="colors/4f4f4f.jpg"></input>
+                    Color: <input type="radio" value ="1" name="dbh_color" data="dbh" id="6" color="1" checked="checked">
+                    <img src="colors/1.jpg"></input>
+                    <input type="radio" value = "2" name="dbh_color" data="dbh" id="6" color="2">
+                    <img src="colors/2.jpg"></input>
+                    <input type="radio" value ="3" name="dbh_color" data="dbh" id="6" color="3">
+                    <img src="colors/3.jpg"></input>
 
-                    <form>
-                        Size: <input type="range" id="dbh_width" name="dbh_amountRange" min="0" max="20" value="10" oninput="this.form.dbh_amountInput.value=this.value" /> <input type="number" id="dbh_width_box" name="dbh_amountInput" min="0" max="20" value="10" oninput="this.form.dbh_amountRange.value=this.value"/>px
+                    <form id="size_form" action="form_action.asp">
+                            Size (range): min: <input id="min" type="text" name="fname" value="10" size="4">px max: <input id="max" type="text" name="fname" value="20" size="4">px 
                     </form>
                     
                     <!--<button type="button" class="btn btn-default">Submit</button>
@@ -525,12 +592,6 @@
                         interactivity: 'cartodb_id'
                         },
                         {
-                        // trees
-                        sql: 'SELECT * from bg_trees',
-                        cartocss: '#bg_trees {marker-width: 7;marker-fill: #2d663f;marker-fill-opacity: 0.9;marker-allow-overlap: true;marker-line-width: 0;marker-line-color: #FFF;marker-line-opacity: 0;}',
-                        interactivity: 'cartodb_id'
-                        },
-                        {
                         // public art
                         sql: 'SELECT * from public_art',
                         cartocss: '#public_art {marker-width: 10;marker-fill: #ffc430;marker-fill-opacity: 1;marker-allow-overlap: true;marker-line-width: 0;marker-line-color: #FFF;marker-line-opacity: 0;}',
@@ -555,6 +616,7 @@
                         interactivity: 'cartodb_id'
                         },
                         {
+                        // dbh trees
                         sql: 'SELECT * from dbh_bg_trees',
                         cartocss: '#dbh_bg_trees {marker-width: 10;marker-fill: #FFB927;marker-fill-opacity: 0.9;marker-allow-overlap: true;marker-line-width: 0;marker-line-color: #FFF;marker-line-opacity: 1;}',
                         interactivity: 'cartodb_id'
@@ -598,6 +660,8 @@
                 function createSelector(layer, sublayerList) {
                     var $layer = $(".layer_selector").find("input");
 
+                    var prevColor = "1";
+
                     // dbh
                     $layer.click(function(e) {
                         var $button = $(e.target);
@@ -607,25 +671,40 @@
 
                         // get color
                         var radios = document.getElementsByName("dbh_color");
-                        //console.log("hi", radios.length);
                 
                         for (var i = 0; i<radios.length; i++){
-                            //console.log(i);
-                            //console.log(radios[i].value);
                             if(radios[i].checked){
-                                var myColor = radios[i].value;
+                                colorId = radios[i].value;
                                 var idNum = radios[i].id;
-                                //console.log("color", radios[i].value, myColor);
+                                console.log("color", colorId);
                             }
                         }
 
-                        var dbh_size = document.getElementById("dbh_width").value;
-                        //console.log("********", width);
+                        if (prevColor != colorId){
+                            prevColor = colorId;
+                        var colorLayerCSS = $('#dbh_color_'+colorId).text();
+                        console.log(colorLayerCSS);
+                        sublayerList[6].setCartoCSS(colorLayerCSS);
+                        }
 
+                        else{
+                        // get size
+                        var dbh_size = document.getElementById("size_form");
+                        var dbh_size_min = "", dbh_size_max = "";
+                        for (var i = 0; i < dbh_size.length; i++) {
+                            if (i == 1){
+                                dbh_size_max += dbh_size.elements[i].value;
+                            }
+                            else{
+                                dbh_size_min += dbh_size.elements[i].value;
+                            }
+                        }
+                        console.log("min", dbh_size_min, "max", dbh_size_max);
 
-                        layerCSS = $('#dbh_1').text() + dbh_size + $('#dbh_2').text() + myColor + $('#dbh_3').text();
+                        layerCSS = $('#dbh_size_1').text() + dbh_size_min +"," + dbh_size_max + $('#dbh_size_2').text();
                             //console.log("opcss", layerCSS);
-                            sublayerList[7].setCartoCSS(layerCSS);
+                        sublayerList[6].setCartoCSS(layerCSS);
+                    }
                     });
                 }
 
