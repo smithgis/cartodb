@@ -44,7 +44,7 @@
             .layer_selector {
                 background: rgba(255,255,255,0.9);
                 border-radius: 5px;
-                padding: 0;
+                padding: 20px;
                 border: 1px solid #999;
                 width: 300px;
                 height: auto;
@@ -539,29 +539,35 @@
                 }
             </style>
 
-
-
     </head>
     <body>
         <div id="map"></div>
             <div id="cartocss" class="layer_selector">
-                <br>
                 <center>
                     <!-- dbh trees -->
                     <b>DBH Trees</b><br>
-                    Color: <input type="radio" value ="1" name="dbh_color" data="dbh" id="6" color="1" checked="checked">
-                    <img src="colors/1.jpg"></input>
-                    <input type="radio" value = "2" name="dbh_color" data="dbh" id="6" color="2">
-                    <img src="colors/2.jpg"></input>
-                    <input type="radio" value ="3" name="dbh_color" data="dbh" id="6" color="3">
-                    <img src="colors/3.jpg"></input>
+                    Select a style:
+                    <select id="select">
+                        <option value="">-select one-</option> 
+                        <option value="1">color</option>
+                        <option value="2">size</option>
+                    </select>
 
-                    <form id="size_form" action="form_action.asp">
-                            Size (range): min: <input id="min" type="text" name="fname" value="10" size="4">px max: <input id="max" type="text" name="fname" value="20" size="4">px 
-                    </form>
+                    <div class="style-sub-1" id="1" style="display:none">
+                        <input type="radio" value ="1" name="dbh_color" data="dbh" id="6" color="1">
+                        <img src="colors/1.jpg"></input>
+                        <input type="radio" value = "2" name="dbh_color" data="dbh" id="6" color="2">
+                        <img src="colors/2.jpg"></input>
+                        <input type="radio" value ="3" name="dbh_color" data="dbh" id="6" color="3">
+                        <img src="colors/3.jpg"></input>
+                    </div>
+
+                    <div class="style-sub-1" id="2" style="display:none">
+                        <form id="size_form" action="form_action.asp">
+                            min: <input id="min" type="text" name="fname" value="10" size="4">px max: <input id="max" type="text" name="fname" value="20" size="4">px 
+                        </form>
+                    </div>
                     
-                    <!--<button type="button" class="btn btn-default">Submit</button>
-                    <br>--><br>
                 </center>
             </div>
         </div>
@@ -572,6 +578,9 @@
 
         <!-- bootstrap-slider.js library -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.4.1/bootstrap-slider.js" type="text/javascript"></script>
+
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
         <!-- Place your code in the script tags below -->
         <script type="text/javascript">
@@ -624,7 +633,7 @@
                 };
               
                 // For storing the sublayer
-                var sublayer;
+                var sublayer, targID;
 
                 var sublayerList = [];
               
@@ -657,81 +666,61 @@
                   console.log("error: " + err);
                 });
 
+                $(function() {
+                    $('#select').change(function(){
+                        targID  = $(this).val ();
+                        $("div.style-sub-1").hide ();
+                        $('#' + targID).show ();
+                    });
+                });
+
                 function createSelector(layer, sublayerList) {
                     var $layer = $(".layer_selector").find("input");
 
-                    var prevColor = "1";
+                    var prevColor = "";
 
                     // dbh
                     $layer.click(function(e) {
                         var $button = $(e.target);
                         var name = $button.attr('name');
                         var layerName = $button.attr('layer');
-                        //console.log(name, layerName);
 
-                        // get color
-                        var radios = document.getElementsByName("dbh_color");
-                
-                        for (var i = 0; i<radios.length; i++){
-                            if(radios[i].checked){
-                                colorId = radios[i].value;
-                                var idNum = radios[i].id;
-                                console.log("color", colorId);
+                        // color
+                        if (targID == 1){
+                            var radios = document.getElementsByName("dbh_color");
+                    
+                            for (var i = 0; i<radios.length; i++){
+                                if(radios[i].checked){
+                                    colorId = radios[i].value;
+                                    var idNum = radios[i].id;
+                                    //console.log("color", colorId);
+                                }
                             }
+                            var colorLayerCSS = $('#dbh_color_'+colorId).text();
+                            //console.log(colorLayerCSS);
+                            sublayerList[6].setCartoCSS(colorLayerCSS);
                         }
 
-                        if (prevColor != colorId){
-                            prevColor = colorId;
-                        var colorLayerCSS = $('#dbh_color_'+colorId).text();
-                        console.log(colorLayerCSS);
-                        sublayerList[6].setCartoCSS(colorLayerCSS);
-                        }
-
+                        // size
                         else{
-                        // get size
-                        var dbh_size = document.getElementById("size_form");
-                        var dbh_size_min = "", dbh_size_max = "";
-                        for (var i = 0; i < dbh_size.length; i++) {
-                            if (i == 1){
-                                dbh_size_max += dbh_size.elements[i].value;
+                            var dbh_size = document.getElementById("size_form");
+                            var dbh_size_min = "", dbh_size_max = "";
+                            for (var i = 0; i < dbh_size.length; i++) {
+                                if (i == 1){
+                                    dbh_size_max += dbh_size.elements[i].value;
+                                }
+                                else{
+                                    dbh_size_min += dbh_size.elements[i].value;
+                                }
                             }
-                            else{
-                                dbh_size_min += dbh_size.elements[i].value;
-                            }
-                        }
-                        console.log("min", dbh_size_min, "max", dbh_size_max);
+                            //console.log("min", dbh_size_min, "max", dbh_size_max);
 
-                        layerCSS = $('#dbh_size_1').text() + dbh_size_min +"," + dbh_size_max + $('#dbh_size_2').text();
-                            //console.log("opcss", layerCSS);
-                        sublayerList[6].setCartoCSS(layerCSS);
-                    }
+                            layerCSS = $('#dbh_size_1').text() + dbh_size_min +"," + dbh_size_max + $('#dbh_size_2').text();
+                                //console.log("opcss", layerCSS);
+                            sublayerList[6].setCartoCSS(layerCSS);
+                        }
                     });
                 }
-
-                /**function createSelector(layer, sublayerList) {
-                    var condition = ""; // SQL or CartoCSS string
-                    //var $options = $(".layer_selector").find("li");
-                    var $options = $(".layer_selector").find("input");
-                    $options.click(function(e) {
-                        var $li = $(e.target);
-                        var selected = $li.attr('data');
-                        var idNum = $li.attr('id');
-                        var color = $li.attr('color');
-
-                        console.log("li=",$li, "selected=",selected, "idnum=", idNum, "color=",color);
-
-                        console.log("selected=",selected);
-
-                        console.log(idNum);
-
-                        layerCSS = $('#dbh_1').text() + 10 + $('#dbh_2').text() + color + $('#dbh_3').text();
-                        console.log(layerCSS);
-                        sublayerList[idNum].setCartoCSS(layerCSS);
-
-                        var prevColor = color;
-                    });
-
-                }**/
             }  
         </script>
     </body>
