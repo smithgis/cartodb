@@ -143,6 +143,16 @@
                 height: auto;
             }
 
+            div #colorimg{
+                display:inline-block; 
+                position:relative; 
+                margin-left:0px; 
+                margin-right: 2px; 
+                top:3px; 
+                width:15px; 
+                height:15px;
+            }
+
             </style>
            
             <style type="cartocss/html" id="default">
@@ -457,11 +467,11 @@
                     <div style="display:inline-block; position:relative; margin-left:5px; top:2px; width:15px; height:15px;background:#4f4f4f;"></div></input>-->
 
                     Color: <input type="radio" value ="#3254d1" name="building_color" data="smith_buildings" id="5" color="#3254d1" checked="checked">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#3254d1;"></div></input>
+                    <div id="colorimg" style="background:#3254d1;"></div></input>
                     <input type="radio" value = "#a3a3a3" name="building_color" data="smith_buildings" id="5" color="#a3a3a3">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#a3a3a3;"></div></input>
+                    <div id="colorimg" style="background:#a3a3a3;"></div></input>
                     <input type="radio" value ="#4f4f4f" name="building_color" data="smith_buildings" id="5" color="#4f4f4f">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#4f4f4f;"></div></input>
+                    <div id="colorimg" style="background:#4f4f4f;"></div></input>
                     
                     <form id="sb_form" action="form_action.asp">
                         Opacity: <input type="text" name="fname" value="100" size="4">%
@@ -477,11 +487,11 @@
                     <!-- parking lots -->
                     <b>Parking Lots</b><br>
                     Color: <input type="radio" value ="#777777" name="parking_color" data="parking_lots" id="4" color="#777777" checked="checked">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#777777;"></div></input>
+                    <div id="colorimg" style="background:#777777;"></div></input>
                     <input type="radio" value = "#f2f2f2" name="parking_color" data="parking_lots" id="4" color="#f2f2f2">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#f2f2f2;"></div></input>
+                    <div id="colorimg" style="background:#f2f2f2;"></div></input>
                     <input type="radio" value ="#dddddd" name="parking_color" data="parking_lots" id="4" color="#dddddd">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#dddddd;"></div></input>
+                    <div id="colorimg" style="background:#dddddd;"></div></input>
 
                     <form id="pl_form" action="form_action.asp">
                             Opacity: <input type="text" name="fname" value="100" size="4">%
@@ -497,11 +507,11 @@
                     <!-- public art -->
                     <b>Public Art</b><br>
                     Color: <input type="radio" value = "#ffc430" name="public_color" data="public_art" id="3" color="#ffc430" checked="checked">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#ffc430;"></div></input>
+                    <div id="colorimg" style="background:#ffc430;"></div></input>
                     <input type="radio" value ="#8719c8" name="public_color" data="public_art" id="3" color="#8719c8">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#8719c8;"></div></input>
+                    <div id="colorimg" style="background:#8719c8;"></div></input>
                     <input type="radio" value ="#7279db" name="public_color" data="public_art" id="3" color="#7279db">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#7279db;"></div></input>
+                    <div id="colorimg" style="background:#7279db;"></div></input>
 
                     <form id="pa_form" action="form_action.asp">
                             Opacity: <input type="text" name="fname" value="100" size="4">%
@@ -517,11 +527,11 @@
                     <!-- trees -->
                     <b>Trees</b><br>
                     Color: <input type="radio" value ="#2d663f" name="trees_color" data="bg_trees" id="2" color="#2d663f" checked="checked">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#2d663f;"></div></input>
+                    <div id="colorimg" style="background:#2d663f;"></div></input>
                     <input type="radio" value = "#cee0d4" name="trees_color" ddata="bg_trees" id="2" color="#cee0d4">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#cee0d4;"></div></input>
+                    <div id="colorimg" style="background:#cee0d4;"></div></input>
                     <input type="radio" value ="#08c945" name="trees_color" data="bg_trees" id="2" color="#08c945">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#08c945;"></div></input>
+                    <div id="colorimg" style="background:#08c945;"></div></input>
                     
                     <form id="t_form" action="form_action.asp">
                         Opacity: <input type="text" name="fname" value="100" size="4">%
@@ -537,11 +547,11 @@
                     <!-- campus paths -->
                     <b>Campus Path</b><br>
                     Color: <input type="radio" value = "#dddddd" name="cp_color" data="campuspathsclean" id="1" color="#dddddd" checked="checked">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#dddddd;"></div></input>
+                    <div id="colorimg" style="background:#dddddd;"></div></input>
                     <input type="radio" value = "#f2f2f2" name="cp_color" data="campuspathsclean" id="1" color="#f2f2f2">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#f2f2f2;"></div></input>
+                    <div id="colorimg" style="background:#f2f2f2;"></div></input>
                     <input type="radio" value ="#777777" name="cp_color" data="campuspathsclean" id="1" color="#777777">
-                    <div style="display:inline-block; position:relative; margin-left:0px; margin-right: 2px; top:3px; width:15px; height:15px;background:#777777;"></div></input>
+                    <div id="colorimg" style="background:#777777;"></div></input>
 
                     <form id="cp_form" action="form_action.asp">
                         Opacity: <input type="text" name="fname" value="100" size="4">%
@@ -557,11 +567,11 @@
                     <!-- campus outline -->
                     <b>Campus Outline</b><br>
                     Color: <input type="radio" value ="#2a436e" name="co_color" data="campus_outline" id="0" color="#2a436e" checked="checked">
-                    <img src="colors/2a436e.jpg"></input>
+                    <div id="colorimg" style="background:#2a436e;"></div></input>
                     <input type="radio" value = "#f4f4f4" name="co_color" ddata="campus_outline" id="0" color="#f4f4f4">
-                    <img src="colors/f4f4f4.jpg"></input>
+                    <div id="colorimg" style="background:#f4f4f4;"></div></input>
                     <input type="radio" value ="#2b2b2b" name="co_color" data="campus_outline" id="0" color="#2b2b2b">
-                    <img src="colors/2b2b2b.jpg"></input>
+                    <div id="colorimg" style="background:#2b2b2b;"></div></input>
 
                     <form id="co_form" action="form_action.asp">
                             Opacity: <input type="text" name="fname" value="100" size="4">%
