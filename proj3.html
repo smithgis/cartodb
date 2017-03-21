@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Blended Learning Project 3
+        </title>
+
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		
+		<link rel="shortcut icon" href="https://www.smith.edu/sites/default/files/smithframe_favicon.ico">
+
+        <!-- CartoDB CSS -->
+        <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <style type="text/css">
+            html, body, #map {
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            #interaction {
+                position: absolute;
+                top: 0;
+                right: 0;
+				height: 200px;
+				width: 25%;
+				margin: 10px;
+                overflow: scroll;
+            }
+            #sql {
+                position: absolute;
+                top: 20px;
+                right: 292px;
+            }
+            .layer_selector {
+                background: rgba(255,255,255,0.9);
+                border-radius: 5px;
+                padding: 20px;
+                border: 1px solid #999;
+                width: 300px;
+                height: auto;
+                overflow: scroll;
+
+            }
+            
+            .layer_selector > p {
+                padding: 15px 30px;
+                border-bottom: 1px solid #999;
+            }
+            
+
+            
+            /* Dropdown Button */
+            .dropbtn {
+                background-color: #4CAF50;
+                color: white;
+                padding: 16px;
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            /* The container <div> - needed to position the dropdown content */
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {background-color: #f1f1f1}
+
+            /* Show the dropdown menu on hover */
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+
+            /* Change the background color of the dropdown button when the dropdown content is shown */
+            .dropdown:hover .dropbtn {
+                background-color: #3e8e41;
+            }
+
+
+            form #pl_width, #sb_width, #pa_width, #t_width, #cp_width, #co_width, #dbh_width{
+                width:100px;
+                display: inline-block;
+            }
+
+            img {
+                width: 60px;
+                height: auto;
+            }
+
+            div #colorimg{
+                display:inline-block; 
+                position:relative; 
+                margin-left:0px; 
+                margin-right: -4px;
+                top:3px; 
+                width:15px; 
+                height:15px;
+            }
+
+            input #6 {
+                margin-right: 3px;
+            }
+			
+			#loading {
+				text-align: left;
+				display: none;
+				}
+
+            </style>
+    </head>
+    <body>
+        <div id="map"></div>
+            <div id="interaction" class="layer_selector">
+                <center>
+                    <b>Select a layer:</b>
+
+                    <select id="layer">
+                        <option value="">-select one-</option> 
+                        <option value="0">grocery stores</option>
+                        <option value="1">bus lines</option>
+                    </select>
+					
+					<br /><br />
+
+					<b>Enter buffer distance</b>
+					<input id="buffer" value=0 />
+						
+					<br /><br />	
+						
+					<button id="submit" type="button">Update map</button>
+					
+					<br /><br />
+					<span id="loading"><b>Loading...</b></span>
+				
+                    
+                </center>
+            </div>
+        </div>
+
+        <!-- include cartodb.js library -->
+        <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
+
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+        <!-- Place your code in the script tags below -->
+        <script type="text/javascript">
+            window.onload = function () {
+                var layerOptions = {
+                    user_name: 'smithgis',
+                    type: 'cartodb',
+                    sublayers: [{
+                        // campus outline
+                        sql: 'SELECT * from freshproducegroceries',
+                        cartocss: '#layer {marker-width: 7;marker-fill: #1062e8;marker-fill-opacity: 0.9;marker-line-color: #FFF;marker-line-width: 1;marker-line-opacity: 1;marker-placement: point;marker-type: ellipse;marker-allow-overlap: true;}',
+                        interactivity: 'cartodb_id'
+                        },
+                        {
+                        // campus paths
+                        sql: 'SELECT * from buslines',
+                        cartocss: '#layer {line-width: 1.5;line-color: #03a325;line-opacity: 1;}',
+                        interactivity: 'cartodb_id'
+                        }]
+                };
+				
+				
+				var sublayer;
+
+                var sublayerList = [];
+				
+				var sublayerNames = ['freshproducegroceries', 'buslines'];
+				
+				var sublayerColors = ['#1062e8', '#03a325']
+
+                // Instantiate new map object, place it in 'map' element
+                var map = new L.Map('map', 
+                    {
+                    center: [42.197172, -72.547283],
+                    zoom: 13
+                    });
+				
+		
+				// Add basemap layer to map
+				 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+					maxZoom: 18, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+				  }).addTo(map);
+
+
+                // Add data layer to your map
+                cartodb.createLayer(map, layerOptions)
+                    .addTo(map)
+                    .done(function(layer) { 
+
+                        for (var i =0; i<layer.getSubLayerCount(); i++){
+                            sublayerList.push(layer.getSubLayer(i));
+                            layer.getSubLayer(i);
+						}
+						
+                // Hide "loading" span whenever layer loads
+						layer.on('load', function () {$('#loading').hide();} );
+				
+				
+				// Update SQL on button click        
+						$('#submit').on('click', function() {
+						
+							$('#loading').show();
+							
+							var sublayerNum = $('#layer').val();
+							
+							var sqlStatement = 'SELECT cartodb_id, ST_Buffer(the_geom_webmercator,' + $('#buffer').val() + ') as the_geom_webmercator FROM ' + sublayerNames[sublayerNum];
+
+							sublayerList[sublayerNum].setSQL(sqlStatement)
+												.setCartoCSS('#layer {polygon-fill: ' + sublayerColors[sublayerNum] + ';polygon-opacity: 0.8;line-color: rgba(0,0,0,1);line-width: 1;line-opacity: 0.8;}');
+
+						});
+
+					});
+		
+			}
+ 
+        </script>
+    </body>
+</html>
