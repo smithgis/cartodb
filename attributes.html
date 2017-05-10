@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Blended Learning Attributes App
+    </title>
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <link rel="shortcut icon" href="https://www.smith.edu/sites/default/files/smithframe_favicon.ico">
+
+    <!-- CartoDB CSS -->
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <style type="text/css">
+        html,
+        body,
+        #map {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        #interaction {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 200px;
+            width: 25%;
+            margin: 10px;
+            overflow: scroll;
+        }
+
+        #sql {
+            position: absolute;
+            top: 20px;
+            right: 292px;
+        }
+
+        .layer_selector {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            padding: 20px;
+            border: 1px solid #999;
+            width: 300px;
+            height: auto;
+            overflow: scroll;
+        }
+
+        .layer_selector>p {
+            padding: 15px 30px;
+            border-bottom: 1px solid #999;
+        }
+
+        #loading {
+            text-align: left;
+            display: none;
+        }
+
+        #interaction span {
+            display: inline-flex;
+            text-align: center;
+        }
+
+        .row {
+            margin: 10px;
+            text-align: center;
+        }
+
+        #add {
+            display: inline-block;
+        }
+
+        input.param {
+            width: 40px;
+        }
+
+        select {
+            height: 30px;
+        }
+
+        b {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <div id="interaction" class="layer_selector">
+        <center>
+            <b>Select a layer:</b>
+            <br /><br />
+            <span class="row" id="row1">
+              <select class="layer" >
+                <option value="">-select one-</option>
+                <option value="zoning">zoning</option>
+                <option value="total_acre">total acre</option>
+              </select>
+              <b class="operators" id="equals"> = </b>
+              <select class="operators" id="operator" style="display: none">
+                <option value="<">&lt</option>
+                <option value=">">&gt</option>
+                <option value="=">=</option>
+              </select>
+              <select class="param" id="attribute" >
+                <option value="">-select one-</option>
+              </select>
+              <input type="text" class="param" id="enter" style="display:none">
+
+              <button type="button" id="add" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+              </button>
+              <button type="button" id='remove' class='btn btn-default btn-sm' style="display:none">
+                  <span class='glyphicon glyphicon-minus'></span>
+              </button>
+            </span>
+
+            <span class="row" id="row2" style="display:none">
+              <select id="operator2" >
+                <option value="AND">AND</option>
+                <option value="OR">OR</option>
+              </select>
+              <br/><br/>
+              <span >
+              <select class="layer" >
+                <option value="">-select one-</option>
+                <option value="zoning">zoning</option>
+                <option value="total_acre">total acre</option>
+              </select>
+              <b class="operators" id="equals1" value="="> = </b>
+              <select class="operators" id="operator1" style="display:none">
+                <option value="<">&lt</option>
+                <option value=">">&gt</option>
+                <option value="=">=</option>
+              </select>
+              <select class="param" id="attribute1" >
+                <option value="">-select one-</option>
+              </select>
+              <input type="text" class="param" id="enter1" style="display:none">
+              </span>
+            </span>
+            <br /><br />
+
+            <button id="submit" type="button">Update Map</button>
+
+            <br /><br />
+            <span id="loading"><b>Loading...</b></span>
+
+        </center>
+    </div>
+
+    <!-- include cartodb.js library -->
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- Place your code in the script tags below -->
+    <script type="text/javascript">
+        window.onload = function() {
+            var layerOptions = {
+                user_name: 'smithgis',
+                type: 'cartodb',
+                sublayers: [{
+                    // municpal outline
+                    sql: 'SELECT * from chicopee_municipal_parcels',
+                    cartocss: '#layer {polygon-fill: #1062e8;polygon-opacity: 0.8;line-color: rgba(0,0,0,1);line-width: 1;line-opacity: 0.8;}',
+                    interactivity: 'cartodb_id'
+                }]
+            };
+
+            var sublayer;
+            var sublayerList = [];
+
+            // Instantiate new map object, place it in 'map' element
+            var map = new L.Map('map', {
+                center: [42.197172, -72.547283],
+                zoom: 13
+            });
+
+            // Add basemap layer to map
+            L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, &copy; <a href="https://carto.com/attribution">CARTO</a>'
+            }).addTo(map);
+
+            var rownum = 1;
+
+            // Add data layer to your map
+            cartodb.createLayer(map, layerOptions, {
+                    https: true
+                })
+                .addTo(map)
+                .done(function(layer) {          
+                    sublayerList.push(layer.getSubLayer(0));
+                    sublayerList[0].show();
+                    
+                    // Hide "loading" span whenever layer loads
+                    layer.on('load', function() {
+                        $('#loading').hide();
+                    });
+
+                    // Show second row when plus button clicked
+                    $('#add').on('click', function() {
+                        $("#add").hide();
+                        $("#remove").show();
+                        $("#row2").slideToggle("fast");
+                        rownum++;
+                    });
+                    // Hide second row when minus button clicked
+                    $('#remove').on('click', function() {
+                        $("#add").show();
+                        $("#remove").hide();
+                        $("#row2").slideToggle("fast");
+                        rownum--;
+                    });
+
+                    // Update drop down options when a layer is selected
+                    $(document).click(function() {
+
+                        $("#row1 .layer").change(function() {
+                            var val = $(this).val();
+                            //zoning: show different operator and select options
+                            if (val == "zoning") {
+                                $('#attribute').show();
+                                $('#enter').hide();
+                                $('#equals').show();
+                                $('#operator').hide();
+
+                                $("#attribute").html("<option value=&#39;Ind&#39;>Ind</option><option value=&#39;Split&#39;>Split</option><option value=&#39;Res&#39;>Res</option><option value=&#39;BusA&#39;>BusA</option><option value=&#39;BusB&#39;>BusB</option>");
+                            }
+                            //total acre: show different operator and select options
+                            else if (val == "total_acre") {
+                                $('#attribute').hide();
+                                $('#enter').show();
+                                $('#equals').hide();
+                                $('#operator').show();
+                            }
+                        });
+                        $("#row2 .layer").change(function() {
+                            var val = $(this).val();
+                            //zoning: show different operator and select options
+                            if (val == "zoning") {
+                                $('#attribute1').show();
+                                $('#enter1').hide();
+                                $('#equals1').show();
+                                $('#operator1').hide();
+
+                                $("#attribute1").html("<option value=&#39;Ind&#39;>Ind</option><option value=&#39;Split&#39;>Split</option><option value=&#39;Res&#39;>Res</option><option value=&#39;BusA&#39;>BusA</option><option value=&#39;BusB&#39;>BusB</option>");
+                            }
+                            //total acre: show different operator and select options
+                            else if (val == "total_acre") {
+                                $('#attribute1').hide();
+                                $('#enter1').show();
+                                $('#equals1').hide();
+                                $('#operator1').show();
+                            }
+                        });
+                    });
+                    
+                    // Update sql on submit click
+                    $('#submit').on('click', function() {
+
+                        $('#loading').show();
+
+                        var sqlStatement = "SELECT * from chicopee_municipal_parcels WHERE ";
+                        
+                        // append function to update sql statement when row = 1 or row > 1
+                        var appendSQL = function(r) {
+                            var ID = "#row" + r.toString() + " .layer";
+                            var sublayer = $(ID).val();
+                            
+                            // get all values from html elements
+                            if (sublayer == 'zoning') {
+                                sqlStatement += $("#row" + r.toString() + " .layer").val() + " " + $("#row" + r.toString() + " .operators:visible").text() + " " + $("#row" + r.toString() + " .param:visible").val();
+                                //alert(sqlStatement);
+                            } else if (sublayer == 'total_acre') {
+                                sqlStatement += $("#row" + r.toString() + " .layer").val() + " " + $("#row" + r.toString() + " .operators:visible").val() + " " +
+                                    $("#row" + r.toString() + " .param:visible").val();
+                                //alert(sqlStatement);
+                            }
+                        }
+                        // if plus button clicked (row > 1), then join two sql statements with the selected operator (AND, OR)
+                        if (rownum > 1) {
+                            appendSQL(1);
+                            sqlStatement += " " + $("#operator2").val() + " ";
+                            appendSQL(2);
+                        } else {
+                            appendSQL(1);
+                        }
+
+                        sublayerList[0].setSQL(sqlStatement).setCartoCSS('#layer {polygon-fill: #1062e8;polygon-opacity: 0.8;line-color: rgba(0,0,0,1);line-width: 1;line-opacity: 0.8;}');
+
+                    });
+                });
+        }
+    </script>
+</body>
+
+</html>
